@@ -786,7 +786,27 @@ html {
 }
 
 .text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 0.875rem;
+  }
+  
+  .absolute.bottom-4 {
+    bottom: 2rem;
+  }
+  
+  .absolute.bottom-4 .text-xs {
+    opacity: 0.8;
+  }
+
+  .home-copyright {
+    bottom: 2rem;
+    font-size: 0.7rem;
+  }
 }
 
 /* Переключатель языков */

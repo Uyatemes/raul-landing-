@@ -29,7 +29,14 @@ export default function Contacts() {
             <tr className="menu-row">
               <td className="menu-cell">Адрес</td>
               <td className="menu-cell">
-                улица Туркестан 16, 22 этаж
+                <a 
+                  href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  улица Туркестан 16, 22 этаж
+                </a>
               </td>
             </tr>
             <tr className="menu-row">
@@ -49,11 +56,18 @@ export default function Contacts() {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            style={{
+              filter: 'grayscale(100%) contrast(100%) brightness(95%)',
+              border: 'none',
+              width: '100%',
+              height: '100%',
+              borderRadius: '24px'
+            }}
           />
         </div>
 
         <footer className="contacts-footer">
-          <p>© 2025 RAUL. Все права защищены.</p>
+          <p>© 2025 raul. Все права защищены.</p>
         </footer>
       </div>
     </section>

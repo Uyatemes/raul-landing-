@@ -46,7 +46,7 @@ export default function Navigation() {
       <nav className={`nav-container ${isDark ? 'dark' : 'light'} ${isMenuOpen ? 'menu-open' : ''}`}>
         <div className="nav-content px-6 md:px-6">
           {/* Left Side */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
             {/* Burger Menu Button */}
             <button
               className={`md:hidden burger-button ${isDark ? 'text-white' : 'text-black'}`}

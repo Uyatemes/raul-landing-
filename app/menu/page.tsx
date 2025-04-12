@@ -835,6 +835,10 @@ export default function Menu() {
           </div>
         </div>
       </div>
+      <footer className="contacts-footer">
+        <div className="menu-update-date">Меню обновлено 12.04.2025</div>
+        <p>© 2025 raul. Все права защищены.</p>
+      </footer>
     </main>
   );
 } 

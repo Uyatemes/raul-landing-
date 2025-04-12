@@ -57,7 +57,7 @@ export default function About() {
       </div>
 
       <footer className="contacts-footer">
-        <p>© 2025 RAUL Coffee. Все права защищены.</p>
+        <p>© 2025 raul. Все права защищены.</p>
       </footer>
     </section>
   );

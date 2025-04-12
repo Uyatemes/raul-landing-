@@ -270,6 +270,19 @@ html {
   .section-hero {
     height: 100%;
     height: -webkit-fill-available;
+    position: relative;
+  }
+
+  .absolute.bottom-4 {
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .absolute.bottom-4 .text-xs {
+    opacity: 0.8;
   }
 }
 

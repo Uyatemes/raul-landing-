@@ -920,3 +920,25 @@ html {
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
+
+.home-copyright {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  z-index: 10;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .home-copyright {
+    bottom: 1rem;
+    font-size: 0.7rem;
+  }
+}

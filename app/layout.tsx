@@ -11,8 +11,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'RAUL | Кулинарное искусство',
-  description: 'RAUL - ресторан современной кухни в Алматы',
+  title: 'raul.kz',
+  description: 'raul - coffee & snacks',
   icons: {
     icon: [
       {

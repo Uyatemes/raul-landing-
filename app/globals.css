@@ -13,6 +13,13 @@ body {
 
 body.home-page {
   overflow: hidden;
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
 }
 
 /* Основной контейнер */
@@ -250,6 +257,18 @@ body.home-page {
 
   .grid-cols-2 {
     grid-template-columns: 1fr;
+  }
+
+  body.home-page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .section-hero {
+    height: 100%;
+    height: -webkit-fill-available;
   }
 }
 

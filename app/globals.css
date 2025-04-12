@@ -255,9 +255,6 @@ body {
   background-color: transparent;
   transition: all 0.3s ease;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 50;
 }
 
@@ -270,16 +267,28 @@ body {
 }
 
 .nav-container.menu-open {
-  background-color: white;
-  position: fixed;
+  background-color: transparent;
+  position: relative;
+  z-index: 50;
 }
 
 .nav-container.menu-open.dark .nav-link,
 .nav-container.menu-open.dark .burger-icon span {
   color: #2D2D2D;
+  text-shadow: none;
 }
 
 .nav-container.menu-open.dark img {
+  filter: none;
+}
+
+.nav-container.menu-open.light .nav-link,
+.nav-container.menu-open.light .burger-icon span {
+  color: #2D2D2D;
+  text-shadow: none;
+}
+
+.nav-container.menu-open.light img {
   filter: none;
 }
 
@@ -646,8 +655,16 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: currentColor;
+  background-color: #2D2D2D;
   transition: all 0.3s ease;
+}
+
+.nav-container.dark .burger-icon span {
+  background-color: white;
+}
+
+.nav-container.light .burger-icon span {
+  background-color: #2D2D2D;
 }
 
 .burger-icon span:first-child {
@@ -684,8 +701,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  background-color: white;
+  backdrop-filter: none;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 40;
@@ -702,10 +719,11 @@ body {
   justify-content: center;
   height: 100%;
   padding: 2rem;
+  background-color: white;
 }
 
 .mobile-nav-link {
-  color: #000;
+  color: #2D2D2D;
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0.5rem 0;
@@ -713,6 +731,7 @@ body {
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  text-shadow: none;
 }
 
 .mobile-nav-link:hover {
@@ -840,12 +859,13 @@ body {
 
   .about-video-mobile {
     display: block;
-    height: 40vh;
+    margin-bottom: 24px;
+    width: 100%;
   }
 
   .about-video-mobile .about-video {
     width: 100%;
-    height: 100%;
+    height: 40vh;
     object-fit: cover;
     border-radius: 24px;
   }
@@ -862,4 +882,17 @@ body {
   .about-text {
     font-size: 0.9rem;
   }
+}
+
+.home-logo {
+  width: 128px;
+  height: 128px;
+  position: relative;
+}
+
+.home-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }

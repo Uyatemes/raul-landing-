@@ -733,7 +733,7 @@ export default function Menu() {
               <h2 className="menu-category-title">Финиковый смузи</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/date-smoothie.jpg" 
+                  src="/images/seasonal/date-smoothie.png" 
                   alt="Финиковый смузи" 
                   className="seasonal-image"
                 />
@@ -759,7 +759,7 @@ export default function Menu() {
               <h2 className="menu-category-title">Клубничный банан</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/strawberry-banana.jpg" 
+                  src="/images/seasonal/strawberry-banana.png" 
                   alt="Клубничный банан" 
                   className="seasonal-image"
                 />
@@ -785,7 +785,7 @@ export default function Menu() {
               <h2 className="menu-category-title">Грейпфрут груша чай</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/grapefruit-pear.jpg" 
+                  src="/images/seasonal/grapefruit-pear.png" 
                   alt="Грейпфрут груша чай" 
                   className="seasonal-image"
                 />
@@ -811,7 +811,7 @@ export default function Menu() {
               <h2 className="menu-category-title">Банофи пай латте</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/banoffee-pie.jpg" 
+                  src="/images/seasonal/banoffee-pie.png" 
                   alt="Банофи пай латте" 
                   className="seasonal-image"
                 />

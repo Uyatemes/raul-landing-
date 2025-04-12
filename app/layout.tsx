@@ -36,6 +36,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={jetbrainsMono.className}>
+      <head>
+        <link rel="icon" href="/svg/r.svg" type="image/svg+xml" />
+      </head>
       <body>
         <SpaceMonoFont />
         <Navigation />

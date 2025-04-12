@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+body.home-page {
+  overflow: hidden;
+}
+
 /* Основной контейнер */
 .page-container {
   width: 100vw;
@@ -331,6 +335,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
 }
 
 .hero-background img {

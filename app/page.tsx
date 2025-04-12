@@ -1,19 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import BackgroundSlider from './components/BackgroundSlider';
 import Image from 'next/image';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
+    document.body.classList.add('home-page');
+    return () => {
+      document.body.classList.remove('home-page');
+    };
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <main className="min-h-screen relative">

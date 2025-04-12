@@ -57,6 +57,7 @@ html {
   min-height: 100vh;
   padding: 2rem 0 4rem 0;
   width: 100%;
+  padding-top: 4rem;
 }
 
 .menu-content-wrapper {
@@ -278,6 +279,9 @@ html {
   background-color: transparent;
   transition: all 0.3s ease;
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
 }
 
@@ -290,9 +294,12 @@ html {
 }
 
 .nav-container.menu-open {
-  background-color: transparent;
-  position: relative;
-  z-index: 50;
+  background-color: white;
+  position: fixed;
+}
+
+.nav-container.menu-open .nav-content {
+  background-color: white;
 }
 
 .nav-container.menu-open.dark .nav-link,
@@ -315,6 +322,15 @@ html {
   filter: none;
 }
 
+.nav-container.menu-open .burger-icon span {
+  background-color: #2D2D2D;
+}
+
+.nav-container.menu-open.dark .burger-icon span,
+.nav-container.menu-open.light .burger-icon span {
+  background-color: #2D2D2D;
+}
+
 .nav-content {
   display: flex;
   justify-content: space-between;
@@ -322,6 +338,7 @@ html {
   height: 4rem;
   max-width: 80rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .nav-link {
@@ -793,22 +810,26 @@ html {
 
 /* О нас */
 .about-section {
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: white;
+  min-height: 100vh;
+  padding: 2rem 0 4rem 0;
+  width: 100%;
   padding-top: 4rem;
-  overflow: hidden;
 }
 
 .about-container {
-  flex: 1;
+  max-width: 80rem;
+  width: 100%;
+  padding: 0 2rem;
+  position: relative;
+  padding-top: 4rem;
   display: flex;
   gap: 4rem;
   align-items: flex-start;
-  max-width: 80rem;
   margin: 0 auto;
-  padding: 4rem 4rem 0rem 4rem;
 }
 
 .about-video-desktop {
@@ -866,14 +887,12 @@ html {
 
 @media (max-width: 768px) {
   .about-section {
-    padding-top: 5rem;
-    height: 100vh;
-    overflow: auto;
+    padding: 3rem 2rem 2rem 2rem;
   }
 
   .about-container {
+    padding: 0;
     flex-direction: column;
-    padding: 0 2rem;
     gap: 2rem;
   }
 
@@ -885,6 +904,7 @@ html {
     display: block;
     margin-bottom: 24px;
     width: 100%;
+    margin-top: 2rem;
   }
 
   .about-video-mobile .about-video {
@@ -919,21 +939,6 @@ html {
   height: 100%;
   object-fit: contain;
   filter: brightness(0) invert(1);
-}
-
-.home-copyright {
-  position: fixed;
-  bottom: 2rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: white;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  line-height: 1.6;
-  z-index: 10;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 0 1rem;
 }
 
 @media (max-width: 768px) {

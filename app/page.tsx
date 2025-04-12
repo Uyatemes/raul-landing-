@@ -15,10 +15,16 @@ export default function Home() {
   return (
     <main className="section-hero">
       <BackgroundSlider />
-      <div className="home-copyright">
-        <p>© RAUL. Все права защищены.</p>
-        <p>Астана, Туркестан 16, этаж 22.</p>
-        <p>Фотография — Tolegen Nurbekovich.</p>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="home-logo">
+          <Image
+            src="/svg/logo.svg"
+            alt="RAUL Coffee Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
     </main>
   );

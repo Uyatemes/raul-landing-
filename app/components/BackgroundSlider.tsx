@@ -16,7 +16,7 @@ export default function BackgroundSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 10000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [backgroundImages.length]);

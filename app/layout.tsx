@@ -1,32 +1,14 @@
 import type { Metadata } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from './components/Navigation'
-import SpaceMonoFont from './components/SpaceMonoFont'
+import { LanguageProvider } from './context/LanguageContext'
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-})
+const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
 export const metadata: Metadata = {
   title: 'raul.kz',
-  description: 'raul - coffee & snacks',
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      }
-    ],
-    apple: '/apple-touch-icon.png',
-  },
-  manifest: '/site.webmanifest',
+  description: 'Кофейня RAUL - ваш уютный уголок для наслаждения кофе',
 }
 
 export default function RootLayout({
@@ -35,14 +17,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru" className={jetbrainsMono.className}>
-      <head>
-        <link rel="icon" href="/svg/r.svg" type="image/svg+xml" />
-      </head>
-      <body>
-        <SpaceMonoFont />
-        <Navigation />
-        {children}
+    <html lang="ru">
+      <body className={inter.className}>
+        <LanguageProvider>
+          <Navigation />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

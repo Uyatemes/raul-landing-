@@ -1,10 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
+import { useLanguage } from '../context/LanguageContext';
+import { menuTranslations } from '../translations/menu';
 
 export default function Menu() {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState('hot');
+  const { language } = useLanguage();
+  const t = menuTranslations[language];
 
   useEffect(() => {
     setMounted(true);
@@ -22,30 +27,30 @@ export default function Menu() {
             className={`menu-tab ${activeTab === 'hot' ? 'active' : ''}`}
             onClick={() => setActiveTab('hot')}
           >
-            Горячие напитки
+            {t.categories.hotDrinks}
           </button>
           <button
             className={`menu-tab ${activeTab === 'cold' ? 'active' : ''}`}
             onClick={() => setActiveTab('cold')}
           >
-            Холодные напитки
+            {t.categories.coldDrinks}
           </button>
           <button
             className={`menu-tab ${activeTab === 'seasonal' ? 'active' : ''}`}
             onClick={() => setActiveTab('seasonal')}
           >
-            Сезонное меню
+            {t.categories.seasonal}
           </button>
         </div>
         <div className={`menu-content ${activeTab === 'hot' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">Кофе</h2>
+              <h2 className="menu-category-title">{t.categories.coffee}</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Эспрессо</div>
+                      <div>{t.items.espresso}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">-</div>
@@ -56,7 +61,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Американо</div>
+                      <div>{t.items.americano}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -69,7 +74,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Капучино</div>
+                      <div>{t.items.cappuccino}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -84,7 +89,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Латте</div>
+                      <div>{t.items.latte}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -97,7 +102,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Флэт Уайт</div>
+                      <div>{t.items.flatWhite}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -108,7 +113,29 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Моккачино</div>
+                      <div>{t.items.cocoa}</div>
+                    </td>
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">M</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">1500</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{t.items.hotChocolate}</div>
+                    </td>
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">S</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">1500</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{t.items.matchaLatte}<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленая, голубая</span></div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -126,7 +153,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Раф Фисташка-Малина</div>
+                      <div>Латте голд</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -134,7 +161,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Раф Дыня-Смородина</div>
+                      <div>Испанский латте</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -142,7 +169,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Латте Голд</div>
+                      <div>Раф фисташка-малина</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -150,15 +177,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Испанский Латте</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Морковный Латте</div>
+                      <div>Раф Дубайский шоколад <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -168,20 +187,9 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">Альтернативный кофе</h2>
+              <h2 className="menu-category-title">{t.categories.alternativeCoffee}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Дрип кофе</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1300</div>
-                    </td>
-                  </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
                       <div>Батч</div>
@@ -199,17 +207,6 @@ export default function Menu() {
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2800</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Полезные шоты</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">-</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2800</div>
@@ -235,7 +232,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Облепиха-Маракуйя</div>
+                      <div>Облепиха-маракуйя</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">L</div>
@@ -257,24 +254,13 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Малина-Имбирь</div>
+                      <div>Малина-имбирь</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">L</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Ягодный</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
                     </td>
                   </tr>
                 </tbody>
@@ -286,7 +272,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Ройбуш малина (без кофеина)</div>
+                      <div>Улун апельсин<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленый</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
@@ -294,7 +280,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Улун апельсин (зеленый)</div>
+                      <div>Английский завтрак<br /><span style={{fontSize: '0.9em', color: '#444'}}>черный</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
@@ -302,73 +288,10 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Английский завтрак (черный)</div>
+                      <div>Ройбуш малина<br /><span style={{fontSize: '0.9em', color: '#444'}}>без кофеина</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Лунный замок (купаж зел.чер)</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="menu-category">
-              <h2 className="menu-category-title">Горячий напиток</h2>
-              <table className="menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Какао</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1300</div>
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Горячий шоколад</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Матча Латте</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1900</div>
-                      <div className="menu-cell-price-item">2200</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Горячий Нутелла</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1900</div>
                     </td>
                   </tr>
                 </tbody>
@@ -378,7 +301,7 @@ export default function Menu() {
           <div className="mt-8">
             <div className="menu-category">
               <h2 className="menu-category-title">Дополнительно</h2>
-              <table className="menu-table">
+              <table className="menu-table menu-table-additional">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
@@ -386,6 +309,18 @@ export default function Menu() {
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
+                    </td>
+                    <td className="menu-cell">
+                      <div>+ Альтернативное молоко</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">600</div>
+                    </td>
+                    <td className="menu-cell">
+                      <div>+ Безлактозное</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">500</div>
                     </td>
                   </tr>
                   <tr className="menu-row">
@@ -395,29 +330,11 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
-                  </tr>
-                  <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>+ Альтернативное молоко</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>+ Творожный крем</div>
+                      <div>+ Сырная шапка</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>+ Безлактозный</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">500</div>
                     </td>
                   </tr>
                 </tbody>
@@ -428,38 +345,7 @@ export default function Menu() {
         <div className={`menu-content ${activeTab === 'cold' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">Айс ти (L)</h2>
-              <table className="menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Манго-Маракуйя</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Малина / Клубника лайм</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Вишневая груша</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="menu-category">
-              <h2 className="menu-category-title">Холодный напиток (L)</h2>
+              <h2 className="menu-category-title">Холодный авторский (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
@@ -472,7 +358,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Айс Латте / Капучино</div>
+                      <div>Айс латте / капучино</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1900</div>
@@ -488,8 +374,31 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Айс Матча</div>
-                      <div className="menu-cell-description">(персик, манго, клубника)</div>
+                      <div>Айс малина раф <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Колд брю<br /><span style={{fontSize: '0.9em', color: '#444'}}>вишня, ананас</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Фраппучино белвита</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Айс матча <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span><br /><span style={{fontSize: '0.9em', color: '#444'}}>клубника, манго, персик, банан</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2700</div>
@@ -497,22 +406,30 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Фраппе Benvito</div>
+                      <div>Эспрессо тоник <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span><br /><span style={{fontSize: '0.9em', color: '#444'}}>цитрус, малина</span></div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2800</div>
+                      <div className="menu-cell-price-item">2100</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Матча тоник <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span><br /><span style={{fontSize: '0.9em', color: '#444'}}>грейпфрут, клубника</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">Лимонад (L)</h2>
+              <h2 className="menu-category-title">Прохладительные напитки (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Персик-Миндаль</div>
+                      <div>Айс ти - Вишня-груша</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -520,7 +437,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Яблоко-Киви</div>
+                      <div>Айс ти - Манго-маракуйя</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -528,7 +445,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Ананас-Банан</div>
+                      <div>Айс ти - Малина/клубника лайм</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -536,7 +453,23 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Вишнёвый</div>
+                      <div>Лимонад - Вишня</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2100</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Лимонад - Драгон-груша <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2100</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Лимонад - Клубника-банан</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -551,15 +484,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Дюшес</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Нутелла банан</div>
+                      <div>Тары</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -573,47 +498,9 @@ export default function Menu() {
                       <div className="menu-cell-price-item">3100</div>
                     </td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="menu-category">
-              <h2 className="menu-category-title">Эспрессо тоник (L)</h2>
-              <table className="menu-table">
-                <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Цитрус</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Сакура</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="menu-category">
-              <h2 className="menu-category-title">Фреш (L)</h2>
-              <table className="menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Апельсиновый</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Яблочный</div>
+                      <div>Нутелла банан</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -628,7 +515,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Бананово-малиновый</div>
+                      <div>Зеленый ПП <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -636,41 +523,26 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Ананасово-манговый</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Зеленый смузи</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Протеиновый смузи</div>
+                      <div>Протеиновый <span style={{color: '#2ecc40', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3400</div>
                     </td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="menu-category">
-              <h2 className="menu-category-title">Бамбл (L)</h2>
-              <table className="menu-table">
-                <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Вишня, Персик, Апельсин</div>
+                      <div>Банан-малина</div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
+                      <div className="menu-cell-price-item">3100</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Ананас-манго</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">3100</div>
                     </td>
                   </tr>
                 </tbody>
@@ -680,7 +552,7 @@ export default function Menu() {
           <div className="mt-8">
             <div className="menu-category">
               <h2 className="menu-category-title">Дополнительно</h2>
-              <table className="menu-table">
+              <table className="menu-table menu-table-additional">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
@@ -688,6 +560,18 @@ export default function Menu() {
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
+                    </td>
+                    <td className="menu-cell">
+                      <div>+ Альтернативное молоко</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">600</div>
+                    </td>
+                    <td className="menu-cell">
+                      <div>+ Безлактозное</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">500</div>
                     </td>
                   </tr>
                   <tr className="menu-row">
@@ -697,29 +581,11 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
-                  </tr>
-                  <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>+ Альтернативное молоко</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>+ Творожный крем</div>
+                      <div>+ Сырная шапка</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>+ Безлактозный</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">500</div>
                     </td>
                   </tr>
                 </tbody>
@@ -730,11 +596,11 @@ export default function Menu() {
         <div className={`menu-content ${activeTab === 'seasonal' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">Финиковый смузи</h2>
+              <h2 className="menu-category-title">Милкшейк "Фисташка"</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/date-smoothie.png" 
-                  alt="Финиковый смузи" 
+                  src="/images/seasonal/pistachio-milkshake.png" 
+                  alt="Милкшейк Фисташка" 
                   className="seasonal-image"
                 />
               </div>
@@ -750,17 +616,14 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <div className="seasonal-description">
-                Насыщенный и питательный напиток на основе молока с натуральными королевскими финиками и курагой.
-              </div>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">Клубничный банан</h2>
+              <h2 className="menu-category-title">Айс-ти "Смородина-Базилик"</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/strawberry-banana.png" 
-                  alt="Клубничный банан" 
+                  src="/images/seasonal/blackcurrant-basil-icetea.png" 
+                  alt="Айс-ти Смородина-Базилик" 
                   className="seasonal-image"
                 />
               </div>
@@ -776,17 +639,14 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <div className="seasonal-description">
-                Освежающий напиток с пюре сладкой клубники и спелого банана. Дополняется ароматной мятой и газированной водой.
-              </div>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">Грейпфрут груша чай</h2>
+              <h2 className="menu-category-title">Лимонад "Ананас-Щавель"</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/grapefruit-pear.png" 
-                  alt="Грейпфрут груша чай" 
+                  src="/images/seasonal/pineapple-sorrel-lemonade.png" 
+                  alt="Лимонад Ананас-Щавель" 
                   className="seasonal-image"
                 />
               </div>
@@ -797,22 +657,19 @@ export default function Menu() {
                       <div className="menu-cell-size-item">L</div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
+                      <div className="menu-cell-price-item">2200</div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <div className="seasonal-description">
-                Ароматный согревающий напиток с пюре грейпфрута и груши, зелёным листовым чаем и розмарином.
-              </div>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">Банофи пай латте</h2>
+              <h2 className="menu-category-title">Смузи "Тропик"</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/banoffee-pie.png" 
-                  alt="Банофи пай латте" 
+                  src="/images/seasonal/tropic-smoothie.png" 
+                  alt="Смузи Тропик" 
                   className="seasonal-image"
                 />
               </div>
@@ -820,25 +677,65 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
+                      <div className="menu-cell-size-item">L</div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
+                      <div className="menu-cell-price-item">3200</div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <div className="seasonal-description">
-                Нежный кофейный напиток с натуральной банановой основой, творожной шапкой и молоком.
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">Бамбл "Матча арбуз"</h2>
+              <div className="seasonal-image-container">
+                <img 
+                  src="/images/seasonal/matcha-watermelon-bumble.png" 
+                  alt="Бамбл Матча арбуз" 
+                  className="seasonal-image"
+                />
               </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">L</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">3200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">Айс-какао с сырной шапкой</h2>
+              <div className="seasonal-image-container">
+                <img 
+                  src="/images/seasonal/ice-cocoa-cheese.png" 
+                  alt="Айс-какао с сырной шапкой" 
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">L</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2000</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-      <footer className="contacts-footer">
-        <div className="menu-update-date">Меню обновлено 12.04.2025</div>
-        <p>© 2025 raul. Все права защищены.</p>
-      </footer>
+      <Footer />
     </main>
   );
 } 

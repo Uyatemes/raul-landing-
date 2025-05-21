@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import BackgroundSlider from './components/BackgroundSlider';
 import Image from 'next/image';
+import Footer from './components/Footer';
 
 export default function Home() {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Home() {
           />
         </div>
       </div>
+      <Footer />
     </main>
   );
 } 

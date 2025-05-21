@@ -206,6 +206,18 @@ html {
   line-height: 1.5;
 }
 
+.menu-table td {
+  border-right: 1px solid #bfa588;
+}
+
+.menu-table td:last-child {
+  border-right: none;
+}
+
+.menu-table.menu-table-additional td {
+  border-right: 1px solid #bfa588 !important;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .menu-section {
@@ -641,7 +653,6 @@ html {
 /* Футер */
 .footer {
   background-color: white;
-  border-top: 1px solid #D4B9A5;
   padding: 1.5rem 0;
   height: 150px; /* Фиксированная высота футера */
 }
@@ -1009,4 +1020,8 @@ html {
   .menu-section .contacts-footer {
     margin-top: 2rem;
   }
+}
+
+.about-jetbrains {
+  font-family: 'JetBrains Mono', monospace !important;
 }

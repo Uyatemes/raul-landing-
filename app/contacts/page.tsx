@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
 
 export default function Contacts() {
   const [mounted, setMounted] = useState(false);
@@ -65,11 +66,8 @@ export default function Contacts() {
             }}
           />
         </div>
-
-        <footer className="contacts-footer">
-          <p>© 2025 raul. Все права защищены.</p>
-        </footer>
       </div>
+      <Footer />
     </section>
   );
 } 

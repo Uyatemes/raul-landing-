@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
 
 export default function About() {
   const [mounted, setMounted] = useState(false);
@@ -39,7 +40,7 @@ export default function About() {
 
         <div className="about-content">
           <h1 className="about-title">О нас</h1>
-          <div className="about-text">
+          <div className="about-text about-jetbrains">
             <p>
               Raul — кофейня с панорамным видом на ботанический сад в Астане.
             </p>
@@ -55,10 +56,7 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      <footer className="contacts-footer">
-        <p>© 2025 raul. Все права защищены.</p>
-      </footer>
+      <Footer />
     </section>
   );
 } 

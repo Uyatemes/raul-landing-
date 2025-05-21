@@ -296,6 +296,31 @@ html {
   .absolute.bottom-4 .text-xs {
     opacity: 0.8;
   }
+
+  .menu-table.menu-table-additional tr {
+    display: table-row;
+    flex-direction: unset;
+    align-items: unset;
+    width: unset;
+  }
+  .menu-table.menu-table-additional td {
+    width: unset;
+    border-right: 1px solid #bfa588 !important;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .menu-table.menu-table-additional td:last-child {
+    border-right: none !important;
+  }
+  .menu-table.menu-table-additional .menu-cell,
+  .menu-table.menu-table-additional .menu-cell-price {
+    text-align: left;
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }
 
 /* Навигация */

@@ -310,12 +310,16 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Альтернативное молоко</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Безлактозное</div>
                     </td>
@@ -330,6 +334,8 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Сырная шапка</div>
                     </td>
@@ -561,12 +567,16 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Альтернативное молоко</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Безлактозное</div>
                     </td>
@@ -581,6 +591,8 @@ export default function Menu() {
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
                     </td>
+                  </tr>
+                  <tr className="menu-row">
                     <td className="menu-cell">
                       <div>+ Сырная шапка</div>
                     </td>

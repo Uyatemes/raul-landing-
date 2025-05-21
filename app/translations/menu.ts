@@ -134,7 +134,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       earlGrey: 'Эрл Грей',
       sencha: 'Сенча',
       jasmine: 'Жасмин',
-      cocoa: 'Какао',
       hotChocolate: 'Горячий шоколад',
       matchaLatte: 'Матча Латте',
       hotNutella: 'Горячий Нутелла',

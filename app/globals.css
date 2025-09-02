@@ -465,6 +465,21 @@ html {
 }
 
 /* Сезонное меню */
+.seasonal-description {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.inline-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+  display: inline-block;
+}
 .seasonal-item {
   display: flex;
   flex-direction: column;

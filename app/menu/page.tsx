@@ -153,7 +153,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Моккачино голд <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Моккачино голд</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -161,7 +161,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Испанский Латте <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Испанский Латте</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2400</div>
@@ -177,7 +177,15 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Раф Дубайский шоколад</div>
+                      <div>Мандариновый кофе <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2000</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>Раф орео <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -347,6 +355,9 @@ export default function Menu() {
               </table>
             </div>
           </div>
+          <div className="mt-8">
+            <p className="menu-allergy-notice">* Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
+          </div>
         </div>
         <div className={`menu-content ${activeTab === 'cold' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
@@ -372,7 +383,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Айс Испанский Латте <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Айс Испанский Латте</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2500</div>
@@ -380,7 +391,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Фраппе Матча <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Фраппе Матча</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2900</div>
@@ -489,7 +500,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Малина-яблоко <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span><br /><span style={{fontSize: '0.9em', color: '#444'}}>коллаген</span></div>
+                      <div>Малина-яблоко<br /><span style={{fontSize: '0.9em', color: '#444'}}>коллаген</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -556,15 +567,18 @@ export default function Menu() {
               </table>
             </div>
           </div>
+          <div className="mt-8">
+            <p className="menu-allergy-notice">* Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
+          </div>
         </div>
         <div className={`menu-content ${activeTab === 'seasonal' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">Пряная матча</h2>
+              <h2 className="menu-category-title">Раф попкорн</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/spicy-matcha.png" 
-                  alt="Пряная матча" 
+                  src="/images/seasonal/popcorn-raf.png" 
+                  alt="Раф попкорн" 
                   className="seasonal-image"
                 />
               </div>
@@ -580,15 +594,39 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Мягкий латте на матче с мёдом и цветочной посыпкой.</p>
+              <p className="seasonal-description">Кремовый раф с попкорновым вкусом, молоком и сливками, с фирменной сырной пенкой и попкорном сверху.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">Раф кленовый</h2>
+              <h2 className="menu-category-title">Чай мандариновый-груша</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/maple-raf.png" 
-                  alt="Раф кленовый" 
+                  src="/images/seasonal/mandarin-pear-tea.png" 
+                  alt="Чай мандариновый-груша" 
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">L</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">Теплый фруктовый напиток с мандариновым и грушевым пюре, специями и розмарином на основе зеленого чая.</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">Матча какао</h2>
+              <div className="seasonal-image-container">
+                <img 
+                  src="/images/seasonal/matcha-cocoa.png" 
+                  alt="Матча какао" 
                   className="seasonal-image"
                 />
               </div>
@@ -604,87 +642,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Нежный кофейный напиток на сливках с кленовым сиропом и лёгким ароматом осени.</p>
+              <p className="seasonal-description">Нежный микс матчи и белого какао на молоке, украшенный маршмеллоу.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">Каркаде витамин</h2>
+              <h2 className="menu-category-title">Бамбл облепиха-апельсин</h2>
               <div className="seasonal-image-container">
                 <img 
-                  src="/images/seasonal/karkade-vitamin.png" 
-                  alt="Каркаде витамин" 
-                  className="seasonal-image"
-                />
-              </div>
-              <table className="seasonal-menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p className="seasonal-description">Ягодный чай с клубничным пюре, мятой и лёгкой кислинкой.</p>
-            </div>
-
-            <div className="menu-category">
-              <h2 className="menu-category-title">Имбирный тоник</h2>
-              <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/ginger-tonic.png" 
-                  alt="Имбирный тоник" 
-                  className="seasonal-image"
-                />
-              </div>
-              <table className="seasonal-menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p className="seasonal-description">Освежающий коктейль на основе эспрессо с имбирным тоником и ароматом пандана.</p>
-            </div>
-
-            <div className="menu-category">
-              <h2 className="menu-category-title">Глинтвейн</h2>
-              <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/mulled-wine.png" 
-                  alt="Глинтвейн" 
-                  className="seasonal-image"
-                />
-              </div>
-              <table className="seasonal-menu-table">
-                <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p className="seasonal-description">Пряный согревающий чай с вишнёвым соком, грушей и специями.</p>
-            </div>
-
-            <div className="menu-category">
-              <h2 className="menu-category-title">Кофейный Каркаде</h2>
-              <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/coffee-karkade.png" 
-                  alt="Кофейный Каркаде" 
+                  src="/images/seasonal/sea-buckthorn-orange-bumble.png" 
+                  alt="Бамбл облепиха-апельсин" 
                   className="seasonal-image"
                 />
               </div>
@@ -695,13 +661,64 @@ export default function Menu() {
                       <div className="menu-cell-size-item">M</div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
+                      <div className="menu-cell-price-item">2300</div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Насыщенный эспрессо с яркой кислинкой каркаде.</p>
+              <p className="seasonal-description">Цитрусовый микс апельсина и облепихи. Доступно на выбор: эспрессо или матча-шот.</p>
             </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">Латте Lotus</h2>
+              <div className="seasonal-image-container">
+                <img 
+                  src="/images/seasonal/lotus-latte.png" 
+                  alt="Латте Lotus" 
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">M</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">Классический латте с карамелью и ванилью, сырной пенкой и печеньем Lotus.</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">Чай гранатовый</h2>
+              <div className="seasonal-image-container">
+                <img 
+                  src="/images/seasonal/pomegranate-tea.png" 
+                  alt="Чай гранатовый" 
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">L</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">Пряный черный чай с гранатовым пюре, корицей, анисом и кусочками граната.</p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <p className="menu-allergy-notice">* Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
           </div>
         </div>
       </div>

@@ -218,6 +218,15 @@ html {
   border-right: 1px solid #bfa588 !important;
 }
 
+.menu-allergy-notice {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #666;
+  text-align: left;
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .menu-section {

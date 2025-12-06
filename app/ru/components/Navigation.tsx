@@ -3,18 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import Image from 'next/image';
-import LanguageSwitcher from './LanguageSwitcher';
-import { navigationTranslations } from '../translations/navigation';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
+import { navigationTranslations } from '../../translations/navigation';
 
 export default function Navigation() {
-  const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    setIsDark(pathname === '/');
+    setMounted(true);
+    setIsDark(pathname === '/ru');
   }, [pathname]);
 
   useEffect(() => {
@@ -28,14 +29,6 @@ export default function Navigation() {
     };
   }, [isMenuOpen]);
 
-  const backgroundImages = [
-    '/images/hero/hero-background.webp',
-    '/images/hero/hero-background-2.webp',
-    '/images/hero/hero-background-3.webp',
-    '/images/hero/hero-background-4.webp',
-    '/images/hero/hero-background-5.webp',
-  ];
-
   const handleNavigation = (path: string) => {
     setIsMenuOpen(false);
     setTimeout(() => {
@@ -43,17 +36,22 @@ export default function Navigation() {
     }, 300);
   };
 
+  const navClassName = mounted 
+    ? `nav-container ${isDark ? 'dark' : 'light'} ${isMenuOpen ? 'menu-open' : ''}`
+    : `nav-container dark ${isMenuOpen ? 'menu-open' : ''}`;
+
   return (
     <>
-      <nav className={`nav-container ${isDark ? 'dark' : 'light'} ${isMenuOpen ? 'menu-open' : ''}`}>
+      <nav className={navClassName} suppressHydrationWarning>
         <div className="nav-content px-6 md:px-6">
           {/* Left Side */}
           <div className="flex items-center gap-8">
             {/* Burger Menu Button */}
             <button
-              className={`md:hidden burger-button ${isDark ? 'text-white' : 'text-black'}`}
+              className={`md:hidden burger-button ${mounted && isDark ? 'text-white' : 'text-black'}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={navigationTranslations.kz.menu}
+              aria-label={navigationTranslations.ru.menu}
+              suppressHydrationWarning
             >
               <div className={`burger-icon ${isMenuOpen ? 'open' : ''}`}>
                 <span></span>
@@ -62,34 +60,37 @@ export default function Navigation() {
               </div>
             </button>
 
-            <Link href="/" className="hover:opacity-70 transition-opacity">
-              <img src="/svg/r.svg" alt="R" className={`h-6 ${isDark ? 'invert' : ''}`} />
+            <Link href="/ru" className="hover:opacity-70 transition-opacity">
+              <img src="/svg/r.svg" alt="R" className={`h-6 ${mounted && isDark ? 'invert' : ''}`} suppressHydrationWarning />
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <Link
-                href="/menu"
-                className={`nav-link ${pathname === '/menu' ? 'font-bold' : ''}`}
+                href="/ru/menu"
+                className={`nav-link ${mounted && pathname === '/ru/menu' ? 'font-bold' : ''}`}
+                suppressHydrationWarning
               >
-                {navigationTranslations.kz.menu}
+                {navigationTranslations.ru.menu}
               </Link>
               <Link
-                href="/about"
-                className={`nav-link ${pathname === '/about' ? 'font-bold' : ''}`}
+                href="/ru/about"
+                className={`nav-link ${mounted && pathname === '/ru/about' ? 'font-bold' : ''}`}
+                suppressHydrationWarning
               >
-                {navigationTranslations.kz.about}
+                {navigationTranslations.ru.about}
               </Link>
               <Link
-                href="/contacts"
-                className={`nav-link ${pathname === '/contacts' ? 'font-bold' : ''}`}
+                href="/ru/contacts"
+                className={`nav-link ${mounted && pathname === '/ru/contacts' ? 'font-bold' : ''}`}
+                suppressHydrationWarning
               >
-                {navigationTranslations.kz.contacts}
+                {navigationTranslations.ru.contacts}
               </Link>
             </div>
           </div>
 
           {/* Right Side - Social Icons */}
           <div className="flex items-center gap-6">
-            {pathname !== '/contacts' && (
+            {mounted && pathname !== '/ru/contacts' && (
               <>
                 <a href="https://www.instagram.com/coffee.raul/" target="_blank" rel="noopener noreferrer" className="nav-link">
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,8 +99,8 @@ export default function Navigation() {
                 </a>
                 <a href="https://t.me/coffee_raul_bot" target="_blank" rel="noopener noreferrer" className="nav-link">
                   <svg className="w-6 h-6 align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
                       <g transform="translate(2,2) scale(1.1)">
                         <path d="M10,0 C15.5228475,0 20,4.4771525 20,10 C20,15.5228475 15.5228475,20 10,20 C4.4771525,20 0,15.5228475 0,10 C0,4.4771525 4.4771525,0 10,0 Z M14.4415206,6 C14.060553,6.00676048 13.476055,6.20741135 10.663148,7.36249773 C9.67796175,7.7670526 7.70897661,8.60437935 4.75619264,9.87447795 C4.27670659,10.0627254 4.02553067,10.2468857 4.00266485,10.4269588 C3.95876487,10.7726802 4.46291296,10.8803081 5.09723696,11.0838761 C5.61440201,11.2498453 6.31007997,11.4440124 6.67173438,11.4517262 C6.99978943,11.4587234 7.36593635,11.3251987 7.77017511,11.051152 C10.5290529,9.21254679 11.9531977,8.28322679 12.0426094,8.26319203 C12.1056879,8.24905787 12.1930992,8.23128593 12.2523244,8.28325656 C12.3115496,8.33522719 12.3057275,8.43364956 12.299454,8.46005377 C12.2492926,8.67117474 9.65764825,10.998457 9.50849738,11.1513987 L9.43697409,11.2233057 C8.88741493,11.7661123 8.33196049,12.1205055 9.290333,12.7440164 C10.155665,13.3069957 10.6592923,13.6661378 11.5507686,14.2430701 C12.1204738,14.6117635 12.5671299,15.0489784 13.1553348,14.9955401 C13.4259939,14.9709508 13.705567,14.7196888 13.8475521,13.9703127 C14.1831052,12.1993135 14.8426779,8.36209709 14.9951103,6.78087197 C15.0084653,6.64233621 14.9916649,6.46503787 14.9781732,6.38720805 C14.9646815,6.30937823 14.9364876,6.19848702 14.8340164,6.11639754 C14.7126597,6.01917896 14.5253109,5.99867765 14.4415206,6 Z"/>
@@ -112,7 +113,7 @@ export default function Navigation() {
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/>
                   </svg>
                 </a>
-                <a href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" target="_blank" rel="noopener noreferrer" className={`nav-link ${isDark ? 'text-white' : 'text-black'}`}>
+                <a href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" target="_blank" rel="noopener noreferrer" className={`nav-link ${mounted && isDark ? 'text-white' : 'text-black'}`} suppressHydrationWarning>
                   <svg className="w-6 h-6" viewBox="0 0 566 586" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M419.825 348.408C317.939 348.925 301.458 412.547 295.966 466.342L293.469 490.135H272.99L270.493 466.342C265.001 412.547 248.02 348.925 149.63 348.408C133.149 313.232 126.157 284.783 126.157 252.714C126.157 172.541 189.586 97.5362 283.478 97.5362C377.372 97.5362 439.802 172.021 439.802 253.233C439.802 284.783 436.806 313.232 419.825 348.408ZM282.481 0.291992C127.657 0.291992 0.798828 131.676 0.798828 292.541C0.798828 453.927 127.657 585.309 282.481 585.309C438.802 585.309 565.161 453.927 565.161 292.541C565.161 131.677 438.802 0.291992 282.481 0.291992Z" fill="currentColor"/>
                   </svg>
@@ -125,31 +126,34 @@ export default function Navigation() {
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-content">
-            {pathname !== '/' && (
+            {mounted && pathname !== '/ru' && (
               <button 
-                className={`mobile-nav-link ${pathname === '/' ? 'font-bold' : ''}`}
-                onClick={() => handleNavigation('/')}
+                className={`mobile-nav-link ${pathname === '/ru' ? 'font-bold' : ''}`}
+                onClick={() => handleNavigation('/ru')}
               >
                 Главная
               </button>
             )}
             <button 
-              className={`mobile-nav-link ${pathname === '/menu' ? 'font-bold' : ''}`}
-              onClick={() => handleNavigation('/menu')}
+              className={`mobile-nav-link ${mounted && pathname === '/ru/menu' ? 'font-bold' : ''}`}
+              onClick={() => handleNavigation('/ru/menu')}
+              suppressHydrationWarning
             >
-              {navigationTranslations.kz.menu}
+              {navigationTranslations.ru.menu}
             </button>
             <button 
-              className={`mobile-nav-link ${pathname === '/about' ? 'font-bold' : ''}`}
-              onClick={() => handleNavigation('/about')}
+              className={`mobile-nav-link ${mounted && pathname === '/ru/about' ? 'font-bold' : ''}`}
+              onClick={() => handleNavigation('/ru/about')}
+              suppressHydrationWarning
             >
-              {navigationTranslations.kz.about}
+              {navigationTranslations.ru.about}
             </button>
             <button 
-              className={`mobile-nav-link ${pathname === '/contacts' ? 'font-bold' : ''}`}
-              onClick={() => handleNavigation('/contacts')}
+              className={`mobile-nav-link ${mounted && pathname === '/ru/contacts' ? 'font-bold' : ''}`}
+              onClick={() => handleNavigation('/ru/contacts')}
+              suppressHydrationWarning
             >
-              {navigationTranslations.kz.contacts}
+              {navigationTranslations.ru.contacts}
             </button>
             {/* Language Switcher in Mobile Menu */}
             <div className="mobile-language-switcher">
@@ -160,4 +164,5 @@ export default function Navigation() {
       </nav>
     </>
   );
-} 
+}
+

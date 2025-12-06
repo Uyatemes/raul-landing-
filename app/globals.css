@@ -122,6 +122,15 @@ html {
   margin-bottom: 1rem;
 }
 
+/* Фиксированная высота заголовков в сезонном меню для выравнивания */
+.menu-category:has(.seasonal-image-container) .menu-category-title {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
+}
+
 /* Табы меню */
 .menu-tab {
   font-family: 'Space Mono', monospace;
@@ -727,6 +736,32 @@ html {
   text-align: center;
 }
 
+.footer-language-switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-language-switcher .language-link {
+  color: #666;
+  text-shadow: none;
+}
+
+.footer-language-switcher .language-link:hover {
+  opacity: 0.8;
+}
+
+.footer-language-switcher .language-link.active {
+  color: #2D2D2D;
+  opacity: 1;
+}
+
+.footer-language-switcher .language-separator {
+  color: #666;
+  opacity: 0.5;
+  text-shadow: none;
+}
+
 .language-switcher {
   display: flex;
   gap: 1.5rem;
@@ -1073,4 +1108,93 @@ html {
 
 .about-jetbrains {
   font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.language-link {
+  color: white;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.5rem;
+  opacity: 0.5;
+}
+
+.language-link:hover {
+  opacity: 0.8;
+}
+
+.language-link.active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.language-separator {
+  color: white;
+  opacity: 0.5;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Desktop Language Switcher - bottom left on home page */
+.language-switcher-desktop {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 30;
+}
+
+.language-switcher-desktop .language-link {
+  color: white;
+  font-size: 1rem;
+}
+
+/* Mobile Language Switcher in burger menu */
+.mobile-language-switcher {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-language-switcher .language-link {
+  color: #2D2D2D;
+  font-size: 1.5rem;
+  text-shadow: none;
+  padding: 1rem;
+  opacity: 0.5;
+}
+
+.mobile-language-switcher .language-link:hover {
+  opacity: 0.8;
+}
+
+.mobile-language-switcher .language-link.active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.mobile-language-switcher .language-separator {
+  color: #2D2D2D;
+  opacity: 0.5;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  text-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .language-switcher-desktop {
+    display: none;
+  }
 }

@@ -3,6 +3,7 @@ interface ContactsTranslations {
   address: string;
   workingHours: string;
   phone: string;
+  email: string;
   instagram: string;
   copyright: string;
   schedule: {
@@ -18,6 +19,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     address: 'улица Туркестан 16, 22 этаж',
     workingHours: 'Режим работы',
     phone: 'Телефон',
+    email: 'Почта',
     instagram: 'Instagram',
     copyright: '© 2025 raul. Все права защищены.',
     schedule: {
@@ -31,6 +33,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     address: 'Түркістан көшесі 16, 22 қабат',
     workingHours: 'Жұмыс уақыты',
     phone: 'Телефон',
+    email: 'Пошта',
     instagram: 'Instagram',
     copyright: '© 2025 raul. Барлық құқықтар қорғалған.',
     schedule: {
@@ -44,6 +47,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     address: '16 Turkistan Street, 22nd floor',
     workingHours: 'Working Hours',
     phone: 'Phone',
+    email: 'Email',
     instagram: 'Instagram',
     copyright: '© 2025 raul. All rights reserved.',
     schedule: {

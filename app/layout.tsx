@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navigation from './components/Navigation'
+import ConditionalNavigation from './components/ConditionalNavigation'
 import { LanguageProvider } from './context/LanguageContext'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         <LanguageProvider>
-          <Navigation />
+          <ConditionalNavigation />
           {children}
         </LanguageProvider>
       </body>

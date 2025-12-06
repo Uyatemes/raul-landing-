@@ -1,30 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import { useLanguage } from '../context/LanguageContext';
-import { contactsTranslations } from '../translations/contacts';
 
 export default function Contacts() {
-  const [mounted, setMounted] = useState(false);
-  const { language } = useLanguage();
-  const t = contactsTranslations[language];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <section className="contacts-section">
       <div className="contacts-content">
         <table className="menu-table">
           <tbody>
             <tr className="menu-row">
-              <td className="menu-cell">{t.phone}</td>
+              <td className="menu-cell">Телефон</td>
               <td className="menu-cell">
                 <a href="tel:+77070220503">
                   +7 707 022 05 03
@@ -32,7 +17,7 @@ export default function Contacts() {
               </td>
             </tr>
             <tr className="menu-row">
-              <td className="menu-cell">{language === 'kz' ? 'Мекен-жай' : language === 'ru' ? 'Адрес' : 'Address'}</td>
+              <td className="menu-cell">Адрес</td>
               <td className="menu-cell">
                 <a 
                   href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" 
@@ -40,12 +25,12 @@ export default function Contacts() {
                   rel="noopener noreferrer"
                   className="contact-link"
                 >
-                  {t.address}
+                  улица Туркестан 16, 22 этаж
                 </a>
               </td>
             </tr>
             <tr className="menu-row">
-              <td className="menu-cell">{t.email}</td>
+              <td className="menu-cell">Почта</td>
               <td className="menu-cell">
                 <a href="mailto:info@raul.kz">
                   info@raul.kz
@@ -74,4 +59,5 @@ export default function Contacts() {
       <Footer />
     </section>
   );
-} 
+}
+

@@ -3,15 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Footer from '../components/Footer';
-import { useLanguage } from '../context/LanguageContext';
-import { menuTranslations } from '../translations/menu';
+import { menuTranslations } from '../../translations/menu';
 
 export default function Menu() {
-  const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { language } = useLanguage();
-  const t = menuTranslations[language];
+  const t = menuTranslations.ru;
   
   // Get active tab from URL or default to 'hot'
   const tabFromUrl = searchParams.get('tab');
@@ -20,7 +17,6 @@ export default function Menu() {
   const [activeTab, setActiveTab] = useState(initialTab);
 
   useEffect(() => {
-    setMounted(true);
     // Update active tab from URL on mount
     const tab = searchParams.get('tab');
     if (tab && validTabs.includes(tab)) {
@@ -35,10 +31,6 @@ export default function Menu() {
     params.set('tab', tab);
     router.push(`?${params.toString()}`, { scroll: false });
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <main className="menu-section">
@@ -71,7 +63,7 @@ export default function Menu() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.espresso}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'Бразилия, Кения' : language === 'ru' ? 'Бразилия, Кения' : 'Brazil, Kenya'}</span></div>
+                      <div>{t.items.espresso}<br /><span style={{fontSize: '0.9em', color: '#444'}}>Бразилия, Кения</span></div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">-</div>
@@ -156,7 +148,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.matchaLatte}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'жасыл, как' : language === 'ru' ? 'зеленая, голубая' : 'green, blue'}</span></div>
+                      <div>{t.items.matchaLatte}<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленая, голубая</span></div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -169,12 +161,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.signatureCoffee}</h2>
+              <h2 className="menu-category-title">Авторский кофе (M)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Моккачино голд' : language === 'ru' ? 'Моккачино голд' : 'Moccaccino Gold'}</div>
+                      <div>Моккачино голд</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -182,7 +174,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Испандық латте' : language === 'ru' ? 'Испанский Латте' : 'Spanish Latte'}</div>
+                      <div>Испанский Латте</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2400</div>
@@ -190,7 +182,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Раф пісте-таңқурай' : language === 'ru' ? 'Раф фисташка-малина' : 'Raf Pistachio-Raspberry'}</div>
+                      <div>Раф фисташка-малина</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -198,7 +190,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Мандарин кофесі' : language === 'ru' ? 'Мандариновый кофе' : 'Mandarin Coffee'} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Мандариновый кофе <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2000</div>
@@ -206,7 +198,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Раф орео' : language === 'ru' ? 'Раф орео' : 'Oreo Raf'} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Раф орео <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -245,12 +237,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.authorTea}</h2>
+              <h2 className="menu-category-title">Авторский чай</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.karakTea}</div>
+                      <div>Карак чай</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -261,7 +253,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.seaBuckthorn}</div>
+                      <div>Облепиха-маракуйя</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">L</div>
@@ -272,7 +264,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.raspberryMint}</div>
+                      <div>Тары чай</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">L</div>
@@ -283,7 +275,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.gingerLemonHoney}</div>
+                      <div>Малина-имбирь</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">L</div>
@@ -296,12 +288,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.leafTea}</h2>
+              <h2 className="menu-category-title">Листовой чай (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.earlGrey}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'қара' : language === 'ru' ? 'черный' : 'black'}</span></div>
+                      <div>Английский завтрак<br /><span style={{fontSize: '0.9em', color: '#444'}}>черный</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
@@ -309,7 +301,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.sencha}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'жасыл' : language === 'ru' ? 'зеленый' : 'green'}</span></div>
+                      <div>Улун<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленый</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
@@ -317,7 +309,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.jasmine}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'кофеинсіз' : language === 'ru' ? 'без кофеина' : 'decaffeinated'}</span></div>
+                      <div>Ройбуш<br /><span style={{fontSize: '0.9em', color: '#444'}}>без кофеина</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1500</div>
@@ -329,12 +321,12 @@ export default function Menu() {
           </div>
           <div className="mt-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.additional}</h2>
+              <h2 className="menu-category-title">Дополнительно</h2>
               <table className="menu-table menu-table-additional">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.syrup}</div>
+                      <div>+ Сироп</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
@@ -342,7 +334,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.alternativeMilk}</div>
+                      <div>+ Альтернативное молоко</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
@@ -350,7 +342,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.lactoseFree}</div>
+                      <div>+ Безлактозное</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">500</div>
@@ -358,7 +350,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.decaf}</div>
+                      <div>+ Без кофеина</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
@@ -366,7 +358,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.cottageCream}</div>
+                      <div>+ Сырная шапка</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
@@ -377,18 +369,18 @@ export default function Menu() {
             </div>
           </div>
           <div className="mt-8">
-            <p className="menu-allergy-notice">* {language === 'kz' ? 'егер сізде тағамдық аллергия немесе жеке көтере алмаушылық болса, баристаға алдын ала ескертіңіз.' : language === 'ru' ? 'Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.' : 'If you have food allergies or individual intolerance, please inform the barista in advance.'}</p>
+            <p className="menu-allergy-notice">* eсли у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
           </div>
         </div>
         <div className={`menu-content ${activeTab === 'cold' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Салқын авторлық (L)' : language === 'ru' ? 'Холодный авторский (L)' : 'Cold Signature (L)'}</h2>
+              <h2 className="menu-category-title">Холодный авторский (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.icedAmericano}</div>
+                      <div>Айс Американо</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1700</div>
@@ -396,7 +388,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.icedLatteCappuccino}</div>
+                      <div>Айс Латте / Капучино</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">1900</div>
@@ -404,7 +396,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.icedSpanishLatte}</div>
+                      <div>Айс Испанский Латте</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2500</div>
@@ -412,7 +404,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Фраппе Матча' : language === 'ru' ? 'Фраппе Матча' : 'Frappe Matcha'}</div>
+                      <div>Фраппе Матча</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2900</div>
@@ -420,7 +412,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Фраппучино Белвита' : language === 'ru' ? 'Фраппучино белвита' : 'Frappuccino Belvita'}</div>
+                      <div>Фраппучино белвита</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2800</div>
@@ -428,7 +420,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.icedMatcha}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'кұлпынай, манго, банан' : language === 'ru' ? 'клубника, манго, банан' : 'strawberry, mango, banana'}</span></div>
+                      <div>Айс Матча<br /><span style={{fontSize: '0.9em', color: '#444'}}>клубника, манго, банан</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2700</div>
@@ -436,7 +428,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Эспрессо / Матча тоник' : language === 'ru' ? 'Эспрессо / Матча тоник' : 'Espresso / Matcha Tonic'}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'цитрус, таңкурай' : language === 'ru' ? 'малина, грейпфрут, клубника' : 'raspberry, grapefruit, strawberry'}</span></div>
+                      <div>Эспрессо / Матча тоник<br /><span style={{fontSize: '0.9em', color: '#444'}}>малина, грейпфрут, клубника</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -444,7 +436,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Бамбл' : language === 'ru' ? 'Бамбл' : 'Bumble'}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'шие, шабдалы, апельсин' : language === 'ru' ? 'вишня, персик, апельсин' : 'cherry, peach, orange'}</span></div>
+                      <div>Бамбл<br /><span style={{fontSize: '0.9em', color: '#444'}}>вишня, персик, апельсин</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2200</div>
@@ -454,12 +446,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.coldDrink}</h2>
+              <h2 className="menu-category-title">Прохладительные напитки (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.mangoPassion}</div>
+                      <div>Айс ти - Манго-маракуйя</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -467,7 +459,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.raspberryStrawberryLime}</div>
+                      <div>Айс ти - Малина / Клубника лайм</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -475,7 +467,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.cherryPear}</div>
+                      <div>Лимонад - Ананас-щавель</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -483,7 +475,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{language === 'kz' ? 'Лимонад - Кұлпынай-банан' : language === 'ru' ? 'Лимонад - Клубника-банан' : 'Lemonade - Strawberry-Banana'}</div>
+                      <div>Лимонад - Клубника-банан</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -493,12 +485,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.fresh}</h2>
+              <h2 className="menu-category-title">Фреш (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.orange}</div>
+                      <div>Апельсин</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -508,12 +500,12 @@ export default function Menu() {
               </table>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.smoothie}</h2>
+              <h2 className="menu-category-title">Смузи (L)</h2>
               <table className="menu-table">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.proteinSmoothie} <img src="/svg/zero.svg" alt="✓" className="inline-icon" /></div>
+                      <div>Протеиновый <img src="/svg/zero.svg" alt="✓" className="inline-icon" /></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3400</div>
@@ -521,7 +513,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.apple}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'коллаген' : language === 'ru' ? 'коллаген' : 'collagen'}</span></div>
+                      <div>Малина-яблоко<br /><span style={{fontSize: '0.9em', color: '#444'}}>коллаген</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -529,7 +521,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.pineappleMango}</div>
+                      <div>Ананас-манго</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">3100</div>
@@ -541,12 +533,12 @@ export default function Menu() {
           </div>
           <div className="mt-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.categories.additional}</h2>
+              <h2 className="menu-category-title">Дополнительно</h2>
               <table className="menu-table menu-table-additional">
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.syrup}</div>
+                      <div>+ Сироп</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
@@ -554,7 +546,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.alternativeMilk}</div>
+                      <div>+ Альтернативное молоко</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
@@ -562,7 +554,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.lactoseFree}</div>
+                      <div>+ Безлактозное</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">500</div>
@@ -570,7 +562,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.decaf}</div>
+                      <div>+ Без кофеина</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">600</div>
@@ -578,7 +570,7 @@ export default function Menu() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.cottageCream}</div>
+                      <div>+ Сырная шапка</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">300</div>
@@ -589,17 +581,17 @@ export default function Menu() {
             </div>
           </div>
           <div className="mt-8">
-            <p className="menu-allergy-notice">* {language === 'kz' ? 'егер сізде тағамдық аллергия немесе жеке көтере алмаушылық болса, баристаға алдын ала ескертіңіз.' : language === 'ru' ? 'Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.' : 'If you have food allergies or individual intolerance, please inform the barista in advance.'}</p>
+            <p className="menu-allergy-notice">* если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
           </div>
         </div>
         <div className={`menu-content ${activeTab === 'seasonal' ? 'active' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Раф попкорн' : language === 'ru' ? 'Раф попкорн' : 'Popcorn Raf'}</h2>
+              <h2 className="menu-category-title">Раф попкорн</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/popcorn-raf.png" 
-                  alt={language === 'kz' ? 'Раф попкорн' : language === 'ru' ? 'Раф попкорн' : 'Popcorn Raf'} 
+                  alt="Раф попкорн" 
                   className="seasonal-image"
                 />
               </div>
@@ -615,15 +607,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Попкорн дәмі бар кремді раф: сүт, кілегей және нәзік ірімшік көбігі. Попкорнмен әрленген.' : language === 'ru' ? 'Кремовый раф с попкорновым вкусом, молоком и сливками, с фирменной сырной пенкой и попкорном сверху.' : 'Creamy raf with popcorn flavor, milk and cream, with signature cheese foam and popcorn on top.'}</p>
+              <p className="seasonal-description">Кремовый раф с попкорновым вкусом, молоком и сливками, с фирменной сырной пенкой и попкорном сверху.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Шай мандарин-алмұрт' : language === 'ru' ? 'Чай мандариновый-груша' : 'Mandarin-Pear Tea'}</h2>
+              <h2 className="menu-category-title">Чай мандариновый-груша</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/mandarin-pear-tea.png" 
-                  alt={language === 'kz' ? 'Шай мандарин-алмұрт' : language === 'ru' ? 'Чай мандариновый-груша' : 'Mandarin-Pear Tea'} 
+                  alt="Чай мандариновый-груша" 
                   className="seasonal-image"
                 />
               </div>
@@ -639,15 +631,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Мандарин мен алмұрт пюресіне дәмдеуіштер мен розмарин үйлескен жылы жемісті шай. Негізі жасыл шай.' : language === 'ru' ? 'Теплый фруктовый напиток с мандариновым и грушевым пюре, специями и розмарином на основе зеленого чая.' : 'Warm fruit drink with mandarin and pear puree, spices and rosemary based on green tea.'}</p>
+              <p className="seasonal-description">Теплый фруктовый напиток с мандариновым и грушевым пюре, специями и розмарином на основе зеленого чая.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Матча какао' : language === 'ru' ? 'Матча какао' : 'Matcha Cocoa'}</h2>
+              <h2 className="menu-category-title">Матча какао</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/matcha-cocoa.png" 
-                  alt={language === 'kz' ? 'Матча какао' : language === 'ru' ? 'Матча какао' : 'Matcha Cocoa'} 
+                  alt="Матча какао" 
                   className="seasonal-image"
                 />
               </div>
@@ -663,15 +655,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Матча мен ақ какаоның сүтке негізделген жұмсақ қоспасы. Маршмеллоумен әрленген.' : language === 'ru' ? 'Нежный микс матчи и белого какао на молоке, украшенный маршмеллоу.' : 'Delicate mix of matcha and white cocoa with milk, decorated with marshmallow.'}</p>
+              <p className="seasonal-description">Нежный микс матчи и белого какао на молоке, украшенный маршмеллоу.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Бамбл апельсин-шырғанақ' : language === 'ru' ? 'Бамбл облепиха-апельсин' : 'Sea Buckthorn-Orange Bumble'}</h2>
+              <h2 className="menu-category-title">Бамбл облепиха-апельсин</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/sea-buckthorn-orange-bumble.png" 
-                  alt={language === 'kz' ? 'Бамбл апельсин-шырғанақ' : language === 'ru' ? 'Бамбл облепиха-апельсин' : 'Sea Buckthorn-Orange Bumble'} 
+                  alt="Бамбл облепиха-апельсин" 
                   className="seasonal-image"
                 />
               </div>
@@ -687,15 +679,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Апельсин мен шырғанақтың сергіткіш цитрусты миксі. Таңдауыңызға қарай эспрессо немесе матча-шот.' : language === 'ru' ? 'Цитрусовый микс апельсина и облепихи. Доступно на выбор: эспрессо или матча-шот.' : 'Citrus mix of orange and sea buckthorn. Available with choice: espresso or matcha shot.'}</p>
+              <p className="seasonal-description">Цитрусовый микс апельсина и облепихи. Доступно на выбор: эспрессо или матча-шот.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Латте Lotus' : language === 'ru' ? 'Латте Lotus' : 'Lotus Latte'}</h2>
+              <h2 className="menu-category-title">Латте Lotus</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/lotus-latte.png" 
-                  alt={language === 'kz' ? 'Латте Lotus' : language === 'ru' ? 'Латте Lotus' : 'Lotus Latte'} 
+                  alt="Латте Lotus" 
                   className="seasonal-image"
                 />
               </div>
@@ -711,15 +703,15 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Карамель мен ваниль реңктері бар классикалық латте, ірімшік көбігімен және Lotus печеньесімен безендірілген.' : language === 'ru' ? 'Классический латте с карамелью и ванилью, сырной пенкой и печеньем Lotus.' : 'Classic latte with caramel and vanilla, cheese foam and Lotus cookie.'}</p>
+              <p className="seasonal-description">Классический латте с карамелью и ванилью, сырной пенкой и печеньем Lotus.</p>
             </div>
 
             <div className="menu-category">
-              <h2 className="menu-category-title">{language === 'kz' ? 'Анар шайы' : language === 'ru' ? 'Чай гранатовый' : 'Pomegranate Tea'}</h2>
+              <h2 className="menu-category-title">Чай гранатовый</h2>
               <div className="seasonal-image-container">
                 <img 
                   src="/images/seasonal/pomegranate-tea.png" 
-                  alt={language === 'kz' ? 'Анар шайы' : language === 'ru' ? 'Чай гранатовый' : 'Pomegranate Tea'} 
+                  alt="Чай гранатовый" 
                   className="seasonal-image"
                 />
               </div>
@@ -735,12 +727,12 @@ export default function Menu() {
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{language === 'kz' ? 'Анар пюресі, даршын, анис және анар дәндері қосылған хош иісті қара шай.' : language === 'ru' ? 'Пряный черный чай с гранатовым пюре, корицей, анисом и кусочками граната.' : 'Spicy black tea with pomegranate puree, cinnamon, anise and pomegranate pieces.'}</p>
+              <p className="seasonal-description">Пряный черный чай с гранатовым пюре, корицей, анисом и кусочками граната.</p>
             </div>
           </div>
           <div className="mt-8">
-            <p className="menu-allergy-notice">* {language === 'kz' ? 'егер сізде тағамдық аллергия немесе жеке көтере алмаушылық болса, баристаға алдын ала ескертіңіз.' : language === 'ru' ? 'Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.' : 'If you have food allergies or individual intolerance, please inform the barista in advance.'}</p>
-            <p className="menu-allergy-notice">* {language === 'kz' ? 'сусындардың суреттері ЖИ көмегімен жасалған және шынайы түрінен сәл ерекшеленуі мүмкін.' : language === 'ru' ? 'изображения напитков сгенерированы с помощью ИИ и могут немного отличаться от реального вида напитков.' : 'drink images are generated using AI and may differ slightly from the actual appearance of the drinks.'}</p>
+            <p className="menu-allergy-notice">* eсли у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
+            <p className="menu-allergy-notice">* изображения напитков сгенерированы с помощью ИИ и могут немного отличаться от реального вида напитков.</p>
           </div>
         </div>
       </div>

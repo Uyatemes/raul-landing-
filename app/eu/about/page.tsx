@@ -1,23 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import { useLanguage } from '../context/LanguageContext';
-import { aboutTranslations } from '../translations/about';
 
 export default function About() {
-  const [mounted, setMounted] = useState(false);
-  const { language } = useLanguage();
-  const t = aboutTranslations[language];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <section className="about-section">
       <div className="about-container">
@@ -43,16 +28,25 @@ export default function About() {
         </div>
 
         <div className="about-content">
-          <h1 className="about-title">{t.title}</h1>
+          <h1 className="about-title">About Us</h1>
           <div className="about-text about-jetbrains">
-            <p>{t.paragraph1}</p>
-            <p>{t.paragraph2}</p>
-            <p>{t.paragraph3}</p>
-            <p>{t.paragraph4}</p>
+            <p>
+              Raul is a coffee house with a panoramic view of the botanical garden in Astana.
+            </p>
+            <p>
+              From the very first day, you — our dear guests, residents and visitors of the capital — have supported us. Thanks to you, Raul has been talked about throughout Kazakhstan and beyond. Your stories, reviews, and warm recommendations have become the most powerful support for us.
+            </p>
+            <p>
+              We sincerely thank everyone who shares with us a love for coffee and atmosphere.
+            </p>
+            <p>
+              Raul continues to grow, change, and become better — every day.
+            </p>
           </div>
         </div>
       </div>
       <Footer />
     </section>
   );
-} 
+}
+

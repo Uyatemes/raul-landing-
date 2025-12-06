@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import BackgroundSlider from './components/BackgroundSlider';
 import Image from 'next/image';
 import Footer from './components/Footer';
-import LanguageSwitcher from './components/LanguageSwitcher';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export default function Home() {
   useEffect(() => {
@@ -35,4 +35,5 @@ export default function Home() {
       <Footer />
     </main>
   );
-} 
+}
+

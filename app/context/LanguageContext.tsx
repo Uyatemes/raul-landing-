@@ -1,6 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 type Language = 'ru' | 'kz' | 'en';
 
@@ -12,7 +13,19 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ru');
+  const pathname = usePathname();
+  const [language, setLanguage] = useState<Language>('kz'); // Default to KZ for main site
+
+  useEffect(() => {
+    // Determine language based on pathname
+    if (pathname?.startsWith('/ru')) {
+      setLanguage('ru');
+    } else if (pathname?.startsWith('/eu')) {
+      setLanguage('en');
+    } else {
+      setLanguage('kz'); // Main site is KZ
+    }
+  }, [pathname]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

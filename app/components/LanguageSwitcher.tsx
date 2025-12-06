@@ -2,8 +2,9 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-export default function LanguageSwitcher() {
+function LanguageSwitcherContent() {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -68,5 +69,13 @@ export default function LanguageSwitcher() {
         EN
       </Link>
     </div>
+  );
+}
+
+export default function LanguageSwitcher() {
+  return (
+    <Suspense fallback={<div className="language-switcher"><span className="language-link">KZ</span><span className="language-separator">/</span><span className="language-link">RU</span><span className="language-separator">/</span><span className="language-link">EN</span></div>}>
+      <LanguageSwitcherContent />
+    </Suspense>
   );
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Footer from '../components/Footer';
 import { menuTranslations } from '../../translations/menu';
 
-export default function Menu() {
+function MenuContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const t = menuTranslations.ru;
@@ -738,5 +738,21 @@ export default function Menu() {
       </div>
       <Footer />
     </main>
+  );
+}
+
+export default function Menu() {
+  return (
+    <Suspense fallback={
+      <main className="menu-section">
+        <div className="menu-content-wrapper">
+          <div className="menu-tabs">
+            <button className="menu-tab">Загрузка...</button>
+          </div>
+        </div>
+      </main>
+    }>
+      <MenuContent />
+    </Suspense>
   );
 } 

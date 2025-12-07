@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BackgroundSlider() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { language } = useLanguage();
 
   const backgroundImages = [
     '/images/hero/hero-background.webp',
@@ -20,6 +22,26 @@ export default function BackgroundSlider() {
 
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
+
+  const translations = {
+    kz: {
+      copyright: '© RAUL. Барлық құқықтар қорғалған.',
+      address: 'Астана, Түркістан 16, 22 қабат.',
+      photography: 'Фото — Tolegen Nurbekovich.'
+    },
+    ru: {
+      copyright: '© RAUL. Все права защищены.',
+      address: 'Астана, Туркестан 16, этаж 22.',
+      photography: 'Фотография — Tolegen Nurbekovich.'
+    },
+    en: {
+      copyright: '© RAUL. All rights reserved.',
+      address: 'Astana, Turkestan 16, 22nd floor.',
+      photography: 'Photography — Tolegen Nurbekovich.'
+    }
+  };
+
+  const t = translations[language];
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -40,9 +62,9 @@ export default function BackgroundSlider() {
       <div className="absolute bottom-4 left-0 right-0">
         <div className="max-w-[80rem] mx-auto px-4">
           <div className="text-white text-xs opacity-50 text-right">
-            <div className="text-shadow text-right">© RAUL. Все права защищены.</div>
-            <div className="text-shadow text-right">Астана, Туркестан 16, этаж 22.</div>
-            <div className="text-shadow text-right">Фотография — Tolegen Nurbekovich.</div>
+            <div className="text-shadow text-right">{t.copyright}</div>
+            <div className="text-shadow text-right">{t.address}</div>
+            <div className="text-shadow text-right">{t.photography}</div>
           </div>
         </div>
       </div>

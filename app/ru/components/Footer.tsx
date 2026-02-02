@@ -19,14 +19,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-content">
         {isMenuPage && (
-          <div className="menu-update-date">Меню обновлено 02.09.2025</div>
+          <div className="menu-update-date">Меню обновлено 02.02.2026</div>
         )}
         {!isHomePage && (
           <div className="footer-language-switcher">
             <LanguageSwitcher />
           </div>
         )}
-        <p className="footer-copyright">© 2025 raul. Все права защищены.</p>
+        <p className="footer-copyright">© 2026 raul. Все права защищены.</p>
       </div>
     </footer>
   );

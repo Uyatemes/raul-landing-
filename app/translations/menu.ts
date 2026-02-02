@@ -1,8 +1,14 @@
+interface BreakfastItem {
+  name: string;
+  description: string;
+}
+
 interface MenuTranslations {
   categories: {
     hotDrinks: string;
     coldDrinks: string;
     seasonal: string;
+    breakfasts: string;
     coffee: string;
     signatureCoffee: string;
     alternativeCoffee: string;
@@ -85,6 +91,14 @@ interface MenuTranslations {
     grapefruitPearTea: string;
     banoffeePieLatte: string;
   };
+  breakfasts: {
+    ricePorridge: BreakfastItem;
+    oatmeal: BreakfastItem;
+    syrniki: BreakfastItem;
+    hashBrownBreakfast: BreakfastItem;
+    bavarianBreakfast: BreakfastItem;
+  };
+  breakfastsSchedule: string;
 }
 
 export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
@@ -93,6 +107,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       hotDrinks: 'Горячие напитки',
       coldDrinks: 'Холодные напитки',
       seasonal: 'Сезонное меню',
+      breakfasts: 'Завтраки',
       coffee: 'Классика',
       signatureCoffee: 'Авторский кофе',
       alternativeCoffee: 'Альтернативный кофе',
@@ -174,13 +189,22 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       strawberryBanana: 'Тәтті құлпынай мен піскен банан пюресінен жасалған сергітетін сусын. Хош иісті жалбыз бен газдалған су қосылады.',
       grapefruitPearTea: 'Грейпфрут пен алмұрт пюресі, жасыл жапырақты шай мен розмарин қосылған хош иісті жылытатын сусын.',
       banoffeePieLatte: 'Табиғи банан негізі, сүзбе қалпақшасы және сүт қосылған нәзік кофе сусыны.'
-    }
+    },
+    breakfasts: {
+      ricePorridge: { name: 'Рисовая каша', description: 'Нежная сливочная каша с бананом, свежими ягодами, грецкими орехами и семенами чиа. Идеальный тёплый завтрак для спокойного утра.' },
+      oatmeal: { name: 'Овсяная каша', description: 'Классическая нежная овсянка на молоке с сливочным маслом. По желанию дополняется сметаной, свежими ягодами, жареным бананом, орехами и семенами чиа.' },
+      syrniki: { name: 'Сырники', description: 'Нежные творожные сырники с золотистой корочкой, подаются горячими с соусом, свежими ягодами. Идеальный завтрак или десерт к кофе.' },
+      hashBrownBreakfast: { name: 'Завтрак Хашбраун', description: 'Хрустящие картофельные хашбрауны, нежный сливочный скрембл и слабосоленая сёмга. Подаётся с крем-чизом с авокадо, огурцом и укропом.' },
+      bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.' }
+    },
+    breakfastsSchedule: 'Завтраки с 8:00 до 12:00'
   },
   kz: {
     categories: {
       hotDrinks: 'ЫСТЫҚ СУСЫНДАР',
       coldDrinks: 'САЛҚЫН СУСЫНДАР',
       seasonal: 'МАУСЫМДЫҚ МӘЗIP',
+      breakfasts: 'ТАҢҒЫ АС',
       coffee: 'Классика',
       signatureCoffee: 'Авторлық кофе (М)',
       alternativeCoffee: 'Альтернативті кофе',
@@ -262,13 +286,22 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       strawberryBanana: 'Тәтті құлпынай мен піскен банан пюресінен жасалған сергітетін сусын. Хош иісті жалбыз бен газдалған су қосылады.',
       grapefruitPearTea: 'Грейпфрут пен алмұрт пюресі, жасыл жапырақты шай мен розмарин қосылған хош иісті жылытатын сусын.',
       banoffeePieLatte: 'Табиғи банан негізі, сүзбе қалпақшасы және сүт қосылған нәзік кофе сусыны.'
-    }
+    },
+    breakfasts: {
+      ricePorridge: { name: 'Күріш ботқасы', description: 'Сары майлы, нәзік күріш ботқасы. Бананмен, балғын жидектермен, грек жаңғағымен және чиа дәндерімен ұсынылады. Сабырлы таңға арналған мінсіз жылы таңғы ас.' },
+      oatmeal: { name: 'Сұлы ботқасы', description: 'Сүтке дайындалған, сары май қосылған классикалық нәзік сұлы ботқасы. Жидектер, қуырылған банан, жаңғақтар және чиа дәндері қосылады.' },
+      syrniki: { name: 'Ірімшік бәліштері', description: 'Алтын түсті қыртысы бар нәзік ірімшік бәліштері. Ыстық күйде йогуртпен және жидектермен ұсынылады. Кофеге арналған мінсіз таңғы ас, немесе десерт.' },
+      hashBrownBreakfast: { name: 'Хашбраун таңғы асы', description: 'Қытырлақ картоп хашбраундары, нәзік әрі кілегейлі скрэмбл және сәл тұздалған ақсерке балық. Авокадо қосылған крем-чиз, қияр және қымыздықпен бірге ұсынылады.' },
+      bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.' }
+    },
+    breakfastsSchedule: 'Таңғы ас 8:00–12:00'
   },
   en: {
     categories: {
       hotDrinks: 'Hot Drinks',
       coldDrinks: 'Cold Drinks',
       seasonal: 'Seasonal Menu',
+      breakfasts: 'Breakfasts',
       coffee: 'Coffee',
       signatureCoffee: 'Signature Coffee',
       alternativeCoffee: 'Alternative Coffee',
@@ -350,6 +383,14 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       strawberryBanana: 'Refreshing drink with sweet strawberry and ripe banana puree. Complemented with aromatic mint and sparkling water.',
       grapefruitPearTea: 'Aromatic warming drink with grapefruit and pear puree, green leaf tea and rosemary.',
       banoffeePieLatte: 'Delicate coffee drink with natural banana base, cottage cheese cap and milk.'
-    }
+    },
+    breakfasts: {
+      ricePorridge: { name: 'Rice Porridge', description: 'Creamy rice porridge with banana, fresh berries, walnuts and chia seeds. A perfect warm breakfast for a calm morning.' },
+      oatmeal: { name: 'Oatmeal', description: 'Classic creamy oatmeal with milk and butter. Topped with berries, fried banana, nuts and chia seeds.' },
+      syrniki: { name: 'Syrniki', description: 'Tender cottage cheese pancakes with a golden crust, served hot with yogurt and fresh berries. An ideal breakfast with coffee or dessert.' },
+      hashBrownBreakfast: { name: 'Hash Brown Breakfast', description: 'Crispy potato hash browns, creamy scrambled eggs and lightly salted salmon. Served with avocado cream cheese, cucumber and dill.' },
+      bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.' }
+    },
+    breakfastsSchedule: 'Breakfasts 8:00–12:00'
   }
 }; 

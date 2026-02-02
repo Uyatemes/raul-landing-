@@ -3,14 +3,16 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Footer from '../components/Footer';
+import { menuTranslations } from '../../translations/menu';
 
 function MenuContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  
+  const t = menuTranslations.en;
+
   // Get active tab from URL or default to 'hot'
   const tabFromUrl = searchParams.get('tab');
-  const validTabs = ['hot', 'cold', 'seasonal'];
+  const validTabs = ['hot', 'cold', 'seasonal', 'breakfasts'];
   const initialTab = tabFromUrl && validTabs.includes(tabFromUrl) ? tabFromUrl : 'hot';
   const [activeTab, setActiveTab] = useState(initialTab);
 
@@ -51,6 +53,12 @@ function MenuContent() {
             onClick={() => handleTabChange('seasonal')}
           >
             Seasonal Menu
+          </button>
+          <button
+            className={`menu-tab ${activeTab === 'breakfasts' ? 'active' : ''}`}
+            onClick={() => handleTabChange('breakfasts')}
+          >
+            {t.categories.breakfasts}
           </button>
         </div>
         <div className={`menu-content ${activeTab === 'hot' ? 'active' : ''}`}>
@@ -731,6 +739,118 @@ function MenuContent() {
           <div className="mt-8">
             <p className="menu-allergy-notice">* if you have food allergies or individual intolerance, please inform the barista in advance.</p>
             <p className="menu-allergy-notice">* drink images are generated using AI and may differ slightly from the actual appearance of the drinks.</p>
+          </div>
+        </div>
+        <div className={`menu-content menu-content-breakfasts ${activeTab === 'breakfasts' ? 'active' : ''}`}>
+          <p className="breakfasts-schedule">{t.breakfastsSchedule}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.breakfasts.ricePorridge.name}</h2>
+              <div className="seasonal-image-container">
+                <img
+                  src="/images/breakfast/rice-porridge.png"
+                  alt={t.breakfasts.ricePorridge.name}
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">1500</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.breakfasts.ricePorridge.description}</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.breakfasts.oatmeal.name}</h2>
+              <div className="seasonal-image-container">
+                <img
+                  src="/images/breakfast/oatmeal.png"
+                  alt={t.breakfasts.oatmeal.name}
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">1500</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.breakfasts.oatmeal.description}</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.breakfasts.syrniki.name}</h2>
+              <div className="seasonal-image-container">
+                <img
+                  src="/images/breakfast/syrniki.png"
+                  alt={t.breakfasts.syrniki.name}
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">1700</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.breakfasts.syrniki.description}</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.breakfasts.hashBrownBreakfast.name}</h2>
+              <div className="seasonal-image-container">
+                <img
+                  src="/images/breakfast/hash-brown-breakfas.png"
+                  alt={t.breakfasts.hashBrownBreakfast.name}
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.breakfasts.hashBrownBreakfast.description}</p>
+            </div>
+
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.breakfasts.bavarianBreakfast.name}</h2>
+              <div className="seasonal-image-container">
+                <img
+                  src="/images/breakfast/bavarian-breakfas.png"
+                  alt={t.breakfasts.bavarianBreakfast.name}
+                  className="seasonal-image"
+                />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.breakfasts.bavarianBreakfast.description}</p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <p className="menu-allergy-notice">* if you have food allergies or individual intolerance, please inform the barista in advance.</p>
           </div>
         </div>
       </div>

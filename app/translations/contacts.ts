@@ -21,7 +21,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     phone: 'Телефон',
     email: 'Почта',
     instagram: 'Instagram',
-    copyright: '© 2025 raul. Все права защищены.',
+    copyright: '© 2026 raul. Все права защищены.',
     schedule: {
       weekdays: 'Пн-Пт',
       weekends: 'Сб-Вс',
@@ -35,7 +35,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     phone: 'Телефон',
     email: 'Пошта',
     instagram: 'Instagram',
-    copyright: '© 2025 raul. Барлық құқықтар қорғалған.',
+    copyright: '© 2026 raul. Барлық құқықтар қорғалған.',
     schedule: {
       weekdays: 'Дс-Жм',
       weekends: 'Сб-Жс',
@@ -49,7 +49,7 @@ export const contactsTranslations: Record<'ru' | 'kz' | 'en', ContactsTranslatio
     phone: 'Phone',
     email: 'Email',
     instagram: 'Instagram',
-    copyright: '© 2025 raul. All rights reserved.',
+    copyright: '© 2026 raul. All rights reserved.',
     schedule: {
       weekdays: 'Mon-Fri',
       weekends: 'Sat-Sun',

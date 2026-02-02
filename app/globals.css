@@ -605,6 +605,43 @@ html {
   line-height: 1.5;
 }
 
+/* Завтраки: расписание, только цена, картинка 1:1 */
+.breakfasts-schedule {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+  color: #2D2D2D;
+  margin-bottom: 2rem;
+}
+
+.menu-content-breakfasts .seasonal-image-container {
+  aspect-ratio: 1 / 1;
+  padding: 0;
+}
+
+.menu-content-breakfasts .seasonal-image-container .seasonal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-content-breakfasts .seasonal-menu-table .menu-row {
+  grid-template-columns: 1fr;
+}
+
+.menu-content-breakfasts .seasonal-menu-table .menu-cell-price {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-content-breakfasts .seasonal-menu-table .menu-cell-price-item {
+  text-align: center;
+  width: 100%;
+}
+
 /* Контакты */
 .contacts-section {
   height: 100vh;

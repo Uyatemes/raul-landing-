@@ -3,12 +3,18 @@ interface BreakfastItem {
   description: string;
 }
 
+interface SeasonalItem {
+  name: string;
+  description: string;
+}
+
 interface MenuTranslations {
   categories: {
     hotDrinks: string;
     coldDrinks: string;
     seasonal: string;
     breakfasts: string;
+    iftar: string;
     coffee: string;
     signatureCoffee: string;
     alternativeCoffee: string;
@@ -66,6 +72,7 @@ interface MenuTranslations {
     peachAlmond: string;
     appleKiwi: string;
     pineappleBanana: string;
+    lemonadeAppleCabbage: string;
     cherry: string;
     duchess: string;
     nutellaBanana: string;
@@ -99,6 +106,21 @@ interface MenuTranslations {
     bavarianBreakfast: BreakfastItem;
   };
   breakfastsSchedule: string;
+  iftarSchedule: string;
+  iftar: {
+    redLentilCreamSoup: BreakfastItem;
+    mushroomCreamSoup: BreakfastItem;
+    fettuccineCreamSauce: BreakfastItem;
+    classicLasagnaMeatRagout: BreakfastItem;
+  };
+  seasonal: {
+    dateSmoothie: SeasonalItem;
+    pomegranateLimeTea: SeasonalItem;
+    jasmineGrapeIcedTea: SeasonalItem;
+    masalaTea: SeasonalItem;
+    pineappleBananaLemonade: SeasonalItem;
+    oreoCacaoCheeseFoam: SeasonalItem;
+  };
 }
 
 export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
@@ -108,6 +130,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'Холодные напитки',
       seasonal: 'Сезонное меню',
       breakfasts: 'Завтраки',
+      iftar: 'Ифтар меню 🌙',
       coffee: 'Классика',
       signatureCoffee: 'Авторский кофе',
       alternativeCoffee: 'Альтернативный кофе',
@@ -136,7 +159,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       rafWalnutCaramel: 'Раф грек жаңғағы-карамель',
       goldenLatte: 'Золотой латте',
       icelandicLatte: 'Исландиялық латте',
-      blueLatte: 'Көк латте',
+      blueLatte: 'Банан Латте с шапкой',
       dripCoffee: 'Дрип кофе',
       batch: 'Batch',
       v60: 'V60',
@@ -165,6 +188,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       peachAlmond: 'Персик-Миндаль',
       appleKiwi: 'Алма-Киви',
       pineappleBanana: 'Ананас-Банан',
+      lemonadeAppleCabbage: 'Лимонад - Яблоко капуста',
       cherry: 'Шие',
       duchess: 'Дюшес',
       nutellaBanana: 'Нутелла банан',
@@ -197,7 +221,22 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       hashBrownBreakfast: { name: 'Завтрак Хашбраун', description: 'Хрустящие картофельные хашбрауны, нежный сливочный скрембл и слабосоленая сёмга. Подаётся с крем-чизом с авокадо, огурцом и укропом.' },
       bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.' }
     },
-    breakfastsSchedule: 'Завтраки с 8:00 до 12:00'
+    breakfastsSchedule: 'Завтраки с 8:00 до 12:00',
+    iftarSchedule: 'Заказы на это блюдо принимаются после захода солнца',
+    iftar: {
+      redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.' },
+      mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.' },
+      fettuccineCreamSauce: { name: 'Фетучини в сливочном соусе', description: 'Фетучини в нежном сливочном соусе с насыщенным, сбалансированным вкусом.' },
+      classicLasagnaMeatRagout: { name: 'Классическая лазанья с мясным рагу', description: 'Слоёная лазанья с сочным мясным рагу, соусом бешамель и тягучим сыром.' }
+    },
+    seasonal: {
+      dateSmoothie: { name: 'Смузи Финик', description: 'Нежный сливочный смузи с мягкой сладостью фиников и солнечной курагой. Бархатная текстура, лёгкие карамельные оттенки и тёплое послевкусие — как первый тёплый день весны.' },
+      pomegranateLimeTea: { name: 'Чай Гранат-лайм', description: 'Ароматный чёрный чай с сочным гранатом и бодрящим лаймом. Свежесть розмарина добавляет зелёную весеннюю нотку и лёгкую прохладу в каждом глотке.' },
+      jasmineGrapeIcedTea: { name: 'Айс ти Жасмин-виноград', description: 'Цветочный жасминовый айс ти с нежным виноградом и спелым персиком. Лёгкий, освежающий и гармоничный — словно прогулка по цветущему саду.' },
+      masalaTea: { name: 'Чай Масала', description: 'Пряный индийский напиток из чёрного чая с молоком, сахаром и специями. Обладает насыщенным вкусом и согревающим ароматом.' },
+      pineappleBananaLemonade: { name: 'Лимонад Ананас-банан', description: 'Яркий лимонад с тропическим ананасом и сладким бананом. Освежающий, сочный и солнечный — как тёплый ветер после долгой зимы.' },
+      oreoCacaoCheeseFoam: { name: 'Какао Орео с шапкой', description: 'Насыщенное шоколадное какао с нежной сырной пенкой и кусочками Орео. Сладкое весеннее настроение в каждом глотке — мягко, сливочно и по-десертному нежно.' }
+    }
   },
   kz: {
     categories: {
@@ -205,6 +244,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'САЛҚЫН СУСЫНДАР',
       seasonal: 'МАУСЫМДЫҚ МӘЗIP',
       breakfasts: 'ТАҢҒЫ АС',
+      iftar: 'АУЫЗАШАР МӘЗІРІ 🌙',
       coffee: 'Классика',
       signatureCoffee: 'Авторлық кофе (М)',
       alternativeCoffee: 'Альтернативті кофе',
@@ -227,12 +267,12 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       cappuccino: 'Капучино',
       latte: 'Латте',
       flatWhite: 'Флэт Уайт',
-      moccaccino: 'Моккачино голд',
+      moccaccino: 'Моккачино',
       rafPistachioTangerine: 'Раф пісте-таңқурай',
       rafWalnutCaramel: 'Раф орео',
-      goldenLatte: 'Моккачино голд',
+      goldenLatte: 'Моккачино',
       icelandicLatte: 'Испандық латте',
-      blueLatte: 'Мандарин кофесі',
+      blueLatte: 'Банан көбігімен Латте',
       dripCoffee: 'Дрип кофе',
       batch: 'Батч',
       v60: 'Фильтр',
@@ -259,9 +299,10 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       icedSpanishLatte: 'Айс Испандық латте',
       icedMatcha: 'Айс Матча',
       frappeBenvito: 'Фраппучино Белвита',
-      peachAlmond: 'Фраппе Матча',
+      peachAlmond: 'Фраппе матча арахис',
       appleKiwi: 'Эспрессо / Матча тоник',
       pineappleBanana: 'Бамбл',
+      lemonadeAppleCabbage: 'Лимонад - Алма-қырыққабат',
       cherry: 'Шие',
       duchess: 'Дюшес',
       nutellaBanana: 'Нутелла банан',
@@ -294,7 +335,22 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       hashBrownBreakfast: { name: 'Хашбраун таңғы асы', description: 'Қытырлақ картоп хашбраундары, нәзік әрі кілегейлі скрэмбл және сәл тұздалған ақсерке балық. Авокадо қосылған крем-чиз, қияр және қымыздықпен бірге ұсынылады.' },
       bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.' }
     },
-    breakfastsSchedule: 'Таңғы ас 8:00–12:00'
+    breakfastsSchedule: 'Таңғы ас 8:00–12:00',
+    iftarSchedule: 'Тек ауызашар уақытында ұсынылады',
+    iftar: {
+      redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.' },
+      mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.' },
+      fettuccineCreamSauce: { name: 'Кілегейлі тұздықтағы фетучини', description: 'Нәзік кілегейлі тұздықтағы, қанық әрі үйлесімді дәмді фетучини.' },
+      classicLasagnaMeatRagout: { name: 'Ет рагуі қосылған классикалық лазанья', description: 'Шырынды ет рагуі, бешамель тұздығы және созылмалы ірімшік қосылған қабатты лазанья.' }
+    },
+    seasonal: {
+      dateSmoothie: { name: 'Құрма смузиі', description: 'Құрманың жұмсақ тәттілігі мен күндей жарқыраған өрік қағы қосылған нәзік кілегейлі смузи. Барқыттай құрылым, жеңіл қарамель реңктері мен көктемнің алғашқы жылы күніндей жылы дәм.' },
+      pomegranateLimeTea: { name: 'Анар-лайм шайы', description: 'Шырынды анар мен сергітетін лайм қосылған хош иісті қара шай. Розмарин балғындығы әр жұтымға көктемгі жасыл реңк пен жеңіл салқындық сыйлайды.' },
+      jasmineGrapeIcedTea: { name: 'Жасмин-жүзім айс-тиі', description: 'Нәзік жүзім мен піскен шабдалы қосылған гүлді жасмин айс-тиі. Гүлдеген бақтағы серуендей жеңіл, сергітетін әрі үйлесімді сусын.' },
+      masalaTea: { name: 'Масала шайы', description: 'Қара шай, сүт, қант және дәмдеуіштерден дайындалған үндінің хош иісті сусыны. Қанық дәм мен жылытатын хош иіске ие.' },
+      pineappleBananaLemonade: { name: 'Ананас-банан лимонады', description: 'Тропикалық ананас пен тәтті банан қосылған жарқын лимонад. Сергітетін, шырынды әрі шуақты – ұзақ қыстан кейінгі жылы желдей асер береді.' },
+      oreoCacaoCheeseFoam: { name: 'Ірімшік көбігі бар Орео какаосы', description: 'Қанық шоколадты какао, назік ірімшік көбігі және Оreо кесектері. Әр жұтымдағы көктемгі тәтті көңіл-күй – жұмсақ, кілегейлі әрі десерттей назік.' }
+    }
   },
   en: {
     categories: {
@@ -302,6 +358,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'Cold Drinks',
       seasonal: 'Seasonal Menu',
       breakfasts: 'Breakfasts',
+      iftar: 'Iftar Menu 🌙',
       coffee: 'Coffee',
       signatureCoffee: 'Signature Coffee',
       alternativeCoffee: 'Alternative Coffee',
@@ -329,7 +386,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       rafWalnutCaramel: 'Raf Walnut-Caramel',
       goldenLatte: 'Golden Latte',
       icelandicLatte: 'Icelandic Latte',
-      blueLatte: 'Blue Latte',
+      blueLatte: 'Banana Latte with cap',
       dripCoffee: 'Drip Coffee',
       batch: 'Batch',
       v60: 'V60',
@@ -359,6 +416,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       peachAlmond: 'Peach-Almond',
       appleKiwi: 'Apple-Kiwi',
       pineappleBanana: 'Pineapple-Banana',
+      lemonadeAppleCabbage: 'Lemonade - Apple cabbage',
       cherry: 'Cherry',
       duchess: 'Duchess',
       nutellaBanana: 'Nutella Banana',
@@ -391,6 +449,21 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       hashBrownBreakfast: { name: 'Hash Brown Breakfast', description: 'Crispy potato hash browns, creamy scrambled eggs and lightly salted salmon. Served with avocado cream cheese, cucumber and dill.' },
       bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.' }
     },
-    breakfastsSchedule: 'Breakfasts 8:00–12:00'
+    breakfastsSchedule: 'Breakfasts 8:00–12:00',
+    iftarSchedule: 'Orders for this dish are accepted after sunset',
+    iftar: {
+      redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.' },
+      mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.' },
+      fettuccineCreamSauce: { name: 'Fettuccine in Cream Sauce', description: 'Fettuccine in a delicate cream sauce with a rich, balanced taste.' },
+      classicLasagnaMeatRagout: { name: 'Classic Lasagna with Meat Ragout', description: 'Layered lasagna with juicy meat ragout, béchamel sauce and stringy cheese.' }
+    },
+    seasonal: {
+      dateSmoothie: { name: 'Date Smoothie', description: 'Gentle creamy smoothie with the soft sweetness of dates and sunny apricots. Velvety texture, light caramel notes and a warm aftertaste – like the first warm day of spring.' },
+      pomegranateLimeTea: { name: 'Pomegranate-Lime Tea', description: 'Aromatic black tea with juicy pomegranate and invigorating lime. The freshness of rosemary adds a green spring note and light coolness in every sip.' },
+      jasmineGrapeIcedTea: { name: 'Jasmine-Grape Iced Tea', description: 'Floral jasmine iced tea with delicate grapes and ripe peaches. Light, refreshing and harmonious – like a stroll through a blossoming garden.' },
+      masalaTea: { name: 'Masala Tea', description: 'Spicy Indian drink made from black tea with milk, sugar and spices. Has a rich taste and warming aroma.' },
+      pineappleBananaLemonade: { name: 'Pineapple-Banana Lemonade', description: 'Bright lemonade with tropical pineapple and sweet banana. Refreshing, juicy and sunny – like a warm wind after a long winter.' },
+      oreoCacaoCheeseFoam: { name: 'Oreo Cacao with Cheese Foam', description: 'Rich chocolate cacao with delicate cheese foam and Oreo pieces. Sweet spring mood in every sip – soft, creamy and dessert-like delicate.' }
+    }
   }
 }; 

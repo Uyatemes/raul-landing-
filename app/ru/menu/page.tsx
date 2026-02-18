@@ -12,7 +12,7 @@ function MenuContent() {
   
   // Get active tab from URL or default to 'hot'
   const tabFromUrl = searchParams.get('tab');
-  const validTabs = ['hot', 'cold', 'seasonal', 'breakfasts'];
+  const validTabs = ['hot', 'cold', 'seasonal', 'breakfasts', 'iftar'];
   const initialTab = tabFromUrl && validTabs.includes(tabFromUrl) ? tabFromUrl : 'hot';
   const [activeTab, setActiveTab] = useState(initialTab);
 
@@ -59,6 +59,12 @@ function MenuContent() {
             onClick={() => handleTabChange('breakfasts')}
           >
             {t.categories.breakfasts}
+          </button>
+          <button
+            className={`menu-tab ${activeTab === 'iftar' ? 'active' : ''}`}
+            onClick={() => handleTabChange('iftar')}
+          >
+            {t.categories.iftar}
           </button>
         </div>
         <div className={`menu-content ${activeTab === 'hot' ? 'active' : ''}`}>
@@ -172,7 +178,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Моккачино голд</div>
+                      <div>{t.items.moccaccino} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -196,15 +202,15 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Мандариновый кофе <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.blueLatte} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2000</div>
+                      <div className="menu-cell-price-item">2300</div>
                     </td>
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Раф орео <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>Раф орео</div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -410,7 +416,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Фраппе Матча</div>
+                      <div>Фраппе матча арахис <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2900</div>
@@ -442,7 +448,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Бамбл<br /><span style={{fontSize: '0.9em', color: '#444'}}>вишня, персик, апельсин</span></div>
+                      <div>Бамбл<br /><span style={{fontSize: '0.9em', color: '#444'}}>вишня, апельсин</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2200</div>
@@ -481,7 +487,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Лимонад - Клубника-банан</div>
+                      <div>{t.items.lemonadeAppleCabbage} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>
@@ -593,152 +599,98 @@ function MenuContent() {
         <div className={`menu-content ${activeTab === 'seasonal' ? 'active' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">Раф попкорн</h2>
+              <h2 className="menu-category-title">{t.seasonal.dateSmoothie.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/popcorn-raf.png" 
-                  alt="Раф попкорн" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/date-smoothie.png" alt={t.seasonal.dateSmoothie.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">3200</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Кремовый раф с попкорновым вкусом, молоком и сливками, с фирменной сырной пенкой и попкорном сверху.</p>
+              <p className="seasonal-description">{t.seasonal.dateSmoothie.description}</p>
             </div>
-
             <div className="menu-category">
-              <h2 className="menu-category-title">Чай мандариновый-груша</h2>
+              <h2 className="menu-category-title">{t.seasonal.pomegranateLimeTea.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/mandarin-pear-tea.png" 
-                  alt="Чай мандариновый-груша" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/pomegranate-lime-tea.png" alt={t.seasonal.pomegranateLimeTea.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Теплый фруктовый напиток с мандариновым и грушевым пюре, специями и розмарином на основе зеленого чая.</p>
+              <p className="seasonal-description">{t.seasonal.pomegranateLimeTea.description}</p>
             </div>
-
             <div className="menu-category">
-              <h2 className="menu-category-title">Матча какао</h2>
+              <h2 className="menu-category-title">{t.seasonal.jasmineGrapeIcedTea.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/matcha-cocoa.png" 
-                  alt="Матча какао" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/jasmine-grape-iced-tea.png" alt={t.seasonal.jasmineGrapeIcedTea.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Нежный микс матчи и белого какао на молоке, украшенный маршмеллоу.</p>
+              <p className="seasonal-description">{t.seasonal.jasmineGrapeIcedTea.description}</p>
             </div>
-
             <div className="menu-category">
-              <h2 className="menu-category-title">Бамбл облепиха-апельсин</h2>
+              <h2 className="menu-category-title">{t.seasonal.masalaTea.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/sea-buckthorn-orange-bumble.png" 
-                  alt="Бамбл облепиха-апельсин" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/masala-tea.png" alt={t.seasonal.masalaTea.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">2100</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Цитрусовый микс апельсина и облепихи. Доступно на выбор: эспрессо или матча-шот.</p>
+              <p className="seasonal-description">{t.seasonal.masalaTea.description}</p>
             </div>
-
             <div className="menu-category">
-              <h2 className="menu-category-title">Латте Lotus</h2>
+              <h2 className="menu-category-title">{t.seasonal.pineappleBananaLemonade.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/lotus-latte.png" 
-                  alt="Латте Lotus" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/pineapple-banana-lemonade.png" alt={t.seasonal.pineappleBananaLemonade.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Классический латте с карамелью и ванилью, сырной пенкой и печеньем Lotus.</p>
+              <p className="seasonal-description">{t.seasonal.pineappleBananaLemonade.description}</p>
             </div>
-
             <div className="menu-category">
-              <h2 className="menu-category-title">Чай гранатовый</h2>
+              <h2 className="menu-category-title">{t.seasonal.oreoCacaoCheeseFoam.name}</h2>
               <div className="seasonal-image-container">
-                <img 
-                  src="/images/seasonal/pomegranate-tea.png" 
-                  alt="Чай гранатовый" 
-                  className="seasonal-image"
-                />
+                <img src="/images/seasonal/oreo-cacao-cheese-foam.png" alt={t.seasonal.oreoCacaoCheeseFoam.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2200</div>
-                    </td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">Пряный черный чай с гранатовым пюре, корицей, анисом и кусочками граната.</p>
+              <p className="seasonal-description">{t.seasonal.oreoCacaoCheeseFoam.description}</p>
             </div>
           </div>
           <div className="mt-8">
             <p className="menu-allergy-notice">* eсли у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
-            <p className="menu-allergy-notice">* изображения напитков сгенерированы с помощью ИИ и могут немного отличаться от реального вида напитков.</p>
           </div>
         </div>
         <div className={`menu-content menu-content-breakfasts ${activeTab === 'breakfasts' ? 'active' : ''}`}>
@@ -847,6 +799,78 @@ function MenuContent() {
                 </tbody>
               </table>
               <p className="seasonal-description">{t.breakfasts.bavarianBreakfast.description}</p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <p className="menu-allergy-notice">* eсли у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.</p>
+          </div>
+        </div>
+        <div className={`menu-content menu-content-iftar ${activeTab === 'iftar' ? 'active' : ''}`}>
+          <p className="breakfasts-schedule">{t.iftarSchedule}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.iftar.redLentilCreamSoup.name}</h2>
+              <div className="seasonal-image-container">
+                <img src="/images/iftar/red-lentil-cream-soup.png" alt={t.iftar.redLentilCreamSoup.name} className="seasonal-image" />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.iftar.redLentilCreamSoup.description}</p>
+            </div>
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.iftar.mushroomCreamSoup.name}</h2>
+              <div className="seasonal-image-container">
+                <img src="/images/iftar/mushroom-cream-soup.png" alt={t.iftar.mushroomCreamSoup.name} className="seasonal-image" />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2600</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.iftar.mushroomCreamSoup.description}</p>
+            </div>
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.iftar.fettuccineCreamSauce.name}</h2>
+              <div className="seasonal-image-container">
+                <img src="/images/iftar/fettuccine-cream-sauce.png" alt={t.iftar.fettuccineCreamSauce.name} className="seasonal-image" />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">3100</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.iftar.fettuccineCreamSauce.description}</p>
+            </div>
+            <div className="menu-category">
+              <h2 className="menu-category-title">{t.iftar.classicLasagnaMeatRagout.name}</h2>
+              <div className="seasonal-image-container">
+                <img src="/images/iftar/classic-lasagna-meat-ragout.png" alt={t.iftar.classicLasagnaMeatRagout.name} className="seasonal-image" />
+              </div>
+              <table className="seasonal-menu-table">
+                <tbody>
+                  <tr className="menu-row">
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">4900</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="seasonal-description">{t.iftar.classicLasagnaMeatRagout.description}</p>
             </div>
           </div>
           <div className="mt-8">

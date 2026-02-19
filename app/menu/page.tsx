@@ -233,17 +233,6 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>Батч</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
                       <div>Фильтр</div>
                     </td>
                     <td className="menu-cell-size">

@@ -222,7 +222,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.' }
     },
     breakfastsSchedule: 'Завтраки с 8:00 до 12:00',
-    iftarSchedule: 'Заказы на это блюдо принимаются после захода солнца',
+    iftarSchedule: 'Меню для Ифтара: начиная со времени Магриба — до 23:30',
     iftar: {
       redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.' },
       mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.' },
@@ -336,7 +336,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.' }
     },
     breakfastsSchedule: 'Таңғы ас 8:00–12:00',
-    iftarSchedule: 'Тек ауызашар уақытында ұсынылады',
+    iftarSchedule: 'Ауызшашар мәзірі: ақшам уақытынан бастап — 23:30-ға дейін.',
     iftar: {
       redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.' },
       mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.' },
@@ -450,7 +450,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.' }
     },
     breakfastsSchedule: 'Breakfasts 8:00–12:00',
-    iftarSchedule: 'Orders for this dish are accepted after sunset',
+    iftarSchedule: 'Iftar menu: from Maghrib time — until 23:30',
     iftar: {
       redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.' },
       mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.' },

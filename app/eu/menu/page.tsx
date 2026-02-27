@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Footer from '../components/Footer';
 import { menuTranslations } from '../../translations/menu';
 
 function MenuContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const t = menuTranslations.en;
 
   // Get active tab from URL or default to 'hot'
@@ -23,6 +25,14 @@ function MenuContent() {
       setActiveTab(tab);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (activeTab !== 'hot') return;
+    if (typeof window !== 'undefined' && window.location.hash === '#menu-classic') {
+      const el = document.getElementById('menu-classic');
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150);
+    }
+  }, [activeTab]);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -69,7 +79,7 @@ function MenuContent() {
         </div>
         <div className={`menu-content ${activeTab === 'hot' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
-            <div className="menu-category">
+            <div id="menu-classic" className="menu-category">
               <h2 className="menu-category-title">Classic</h2>
               <table className="menu-table">
                 <tbody>
@@ -796,7 +806,8 @@ function MenuContent() {
         </div>
         <div className={`menu-content menu-content-iftar ${activeTab === 'iftar' ? 'active' : ''}`}>
           <p className="breakfasts-schedule">{t.iftarSchedule}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <p className="breakfasts-schedule">{t.iftarPromoBefore}<Link href={`${pathname}?tab=hot#menu-classic`} className="iftar-promo-link">{t.iftarPromoLink}</Link>{t.iftarPromoAfter}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <div className="menu-category">
               <h2 className="menu-category-title">{t.iftar.redLentilCreamSoup.name}</h2>
               <div className="seasonal-image-container">

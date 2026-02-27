@@ -614,6 +614,16 @@ html {
   margin-bottom: 2rem;
 }
 
+/* Ссылка «Классика» в акции ифтара — обычная текстовая ссылка, без кнопки и анимации */
+.iftar-promo-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.iftar-promo-link:hover {
+  color: #555;
+}
+
 .menu-content-breakfasts .seasonal-image-container {
   aspect-ratio: 1 / 1;
   padding: 0;

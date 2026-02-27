@@ -107,6 +107,9 @@ interface MenuTranslations {
   };
   breakfastsSchedule: string;
   iftarSchedule: string;
+  iftarPromoBefore: string;
+  iftarPromoLink: string;
+  iftarPromoAfter: string;
   iftar: {
     redLentilCreamSoup: BreakfastItem;
     mushroomCreamSoup: BreakfastItem;
@@ -223,6 +226,9 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Завтраки с 8:00 до 12:00',
     iftarSchedule: 'Меню для Ифтара: начиная со времени Магриба — до 23:30',
+    iftarPromoBefore: 'К заказу из Ифтар-меню — напиток из категории «',
+    iftarPromoLink: 'Классика',
+    iftarPromoAfter: '» в подарок.',
     iftar: {
       redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.' },
       mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.' },
@@ -337,6 +343,9 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Таңғы ас 8:00–12:00',
     iftarSchedule: 'Ауызшашар мәзірі: ақшам уақытынан бастап — 23:30-ға дейін.',
+    iftarPromoBefore: 'Ифтардағы кез келген тағамға «',
+    iftarPromoLink: 'Классика',
+    iftarPromoAfter: '» сусыны тегін.',
     iftar: {
       redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.' },
       mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.' },
@@ -451,6 +460,9 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Breakfasts 8:00–12:00',
     iftarSchedule: 'Iftar menu: from Maghrib time — until 23:30',
+    iftarPromoBefore: 'With any order from Iftar menu — a drink from «',
+    iftarPromoLink: 'Classic',
+    iftarPromoAfter: '» category for free.',
     iftar: {
       redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.' },
       mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.' },

@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
 import { menuTranslations } from '../translations/menu';
@@ -10,6 +11,7 @@ function MenuContent() {
   const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const { language } = useLanguage();
   const t = menuTranslations[language];
   
@@ -27,6 +29,15 @@ function MenuContent() {
       setActiveTab(tab);
     }
   }, [searchParams]);
+
+  // Scroll to "Классика" when opening with ?tab=hot#menu-classic — раздел полностью в видимой области
+  useEffect(() => {
+    if (!mounted || activeTab !== 'hot') return;
+    if (typeof window !== 'undefined' && window.location.hash === '#menu-classic') {
+      const el = document.getElementById('menu-classic');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [mounted, activeTab]);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -77,7 +88,7 @@ function MenuContent() {
         </div>
         <div className={`menu-content ${activeTab === 'hot' ? 'active' : ''}`}>
           <div className="grid grid-cols-2 gap-8">
-            <div className="menu-category">
+            <div id="menu-classic" className="menu-category">
               <h2 className="menu-category-title">{t.categories.coffee}</h2>
               <table className="menu-table">
                 <tbody>
@@ -804,7 +815,8 @@ function MenuContent() {
         </div>
         <div className={`menu-content menu-content-iftar ${activeTab === 'iftar' ? 'active' : ''}`}>
           <p className="breakfasts-schedule">{t.iftarSchedule}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <p className="breakfasts-schedule">{t.iftarPromoBefore}<Link href={`${pathname}?tab=hot#menu-classic`} className="iftar-promo-link">{t.iftarPromoLink}</Link>{t.iftarPromoAfter}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <div className="menu-category">
               <h2 className="menu-category-title">{t.iftar.redLentilCreamSoup.name}</h2>
               <div className="seasonal-image-container">

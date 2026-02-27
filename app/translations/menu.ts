@@ -343,9 +343,9 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Таңғы ас 8:00–12:00',
     iftarSchedule: 'Ауызшашар мәзірі: ақшам уақытынан бастап — 23:30-ға дейін.',
-    iftarPromoBefore: 'Ифтардағы кез келген тағамға «',
+    iftarPromoBefore: 'Ауызашар мәзірі: Кез келген тағамға «',
     iftarPromoLink: 'Классика',
-    iftarPromoAfter: '» сусыны тегін.',
+    iftarPromoAfter: '» сусыны тегін!',
     iftar: {
       redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.' },
       mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.' },

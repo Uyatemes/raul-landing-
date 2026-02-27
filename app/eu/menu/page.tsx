@@ -807,7 +807,7 @@ function MenuContent() {
         <div className={`menu-content menu-content-iftar ${activeTab === 'iftar' ? 'active' : ''}`}>
           <p className="breakfasts-schedule">{t.iftarSchedule}</p>
           <p className="breakfasts-schedule">{t.iftarPromoBefore}<Link href={`${pathname}?tab=hot#menu-classic`} className="iftar-promo-link">{t.iftarPromoLink}</Link>{t.iftarPromoAfter}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 min-[955px]:grid-cols-3 gap-8">
             <div className="menu-category">
               <h2 className="menu-category-title">{t.iftar.redLentilCreamSoup.name}</h2>
               <div className="seasonal-image-container">

@@ -849,7 +849,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
+                      <div className="menu-cell-price-item">4400</div>
                     </td>
                   </tr>
                 </tbody>

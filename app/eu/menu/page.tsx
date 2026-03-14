@@ -188,7 +188,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.moccaccino} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.moccaccino.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -212,7 +212,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.blueLatte} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.blueLatte.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -486,7 +486,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.lemonadeAppleCabbage} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.lemonadeAppleCabbage.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>

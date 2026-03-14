@@ -85,7 +85,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.espresso}<br /><span style={{fontSize: '0.9em', color: '#444'}}>Бразилия, Кения</span></div>
+                      <div>{t.items.espresso.name}<br /><span style={{fontSize: '0.9em', color: '#444'}}>Бразилия, Кения</span></div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">-</div>
@@ -96,7 +96,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.americano}</div>
+                      <div>{t.items.americano.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -109,7 +109,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.cappuccino}</div>
+                      <div>{t.items.cappuccino.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -124,7 +124,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.latte}</div>
+                      <div>{t.items.latte.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -137,7 +137,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.flatWhite}</div>
+                      <div>{t.items.flatWhite.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -148,7 +148,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.cocoa}</div>
+                      <div>{t.items.cocoa.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -159,7 +159,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.hotChocolate}</div>
+                      <div>{t.items.hotChocolate.name}</div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">S</div>
@@ -170,7 +170,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.matchaLatte}<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленая, голубая</span></div>
+                      <div>{t.items.matchaLatte.name}<br /><span style={{fontSize: '0.9em', color: '#444'}}>зеленая, голубая</span></div>
                     </td>
                     <td className="menu-cell-size">
                       <div className="menu-cell-size-item">M</div>
@@ -188,7 +188,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.moccaccino} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.moccaccino.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -212,7 +212,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.blueLatte} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.blueLatte.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2300</div>
@@ -486,7 +486,7 @@ function MenuContent() {
                   </tr>
                   <tr className="menu-row">
                     <td className="menu-cell">
-                      <div>{t.items.lemonadeAppleCabbage} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
+                      <div>{t.items.lemonadeAppleCabbage.name} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
                     </td>
                     <td className="menu-cell-price">
                       <div className="menu-cell-price-item">2100</div>

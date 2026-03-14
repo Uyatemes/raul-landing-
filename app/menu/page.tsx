@@ -5,7 +5,55 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
-import { menuTranslations } from '../translations/menu';
+import { menuTranslations, type MenuItem } from '../translations/menu';
+
+function MenuItemRow({
+  item,
+  nameExtra,
+}: {
+  item: MenuItem;
+  nameExtra?: React.ReactNode;
+}) {
+  const prices = Array.isArray(item.price) ? item.price : [item.price];
+  const sizes = item.sizes ?? ['-'];
+  return (
+    <tr className="menu-row">
+      <td className="menu-cell">
+        <div>{item.name}{nameExtra}</div>
+      </td>
+      <td className="menu-cell-size">
+        {sizes.map((s) => (
+          <div key={s} className="menu-cell-size-item">{s}</div>
+        ))}
+      </td>
+      <td className="menu-cell-price">
+        {prices.map((p) => (
+          <div key={p} className="menu-cell-price-item">{p}</div>
+        ))}
+      </td>
+    </tr>
+  );
+}
+
+function MenuItemRowNoSize({
+  item,
+  nameExtra,
+}: {
+  item: MenuItem;
+  nameExtra?: React.ReactNode;
+}) {
+  const price = Array.isArray(item.price) ? item.price[0] : item.price;
+  return (
+    <tr className="menu-row">
+      <td className="menu-cell">
+        <div>{item.name}{nameExtra}</div>
+      </td>
+      <td className="menu-cell-price">
+        <div className="menu-cell-price-item">{price}</div>
+      </td>
+    </tr>
+  );
+}
 
 function MenuContent() {
   const [mounted, setMounted] = useState(false);
@@ -92,102 +140,20 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.coffee}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.espresso}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'Бразилия, Кения' : language === 'ru' ? 'Бразилия, Кения' : 'Brazil, Kenya'}</span></div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">-</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1000</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.americano}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1300</div>
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.cappuccino}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                      <div className="menu-cell-size-item">M</div>
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                      <div className="menu-cell-price-item">1700</div>
-                      <div className="menu-cell-price-item">1900</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.latte}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1700</div>
-                      <div className="menu-cell-price-item">1900</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.flatWhite}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1700</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.cocoa}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.hotChocolate}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">S</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.matchaLatte}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'жасыл, көк' : language === 'ru' ? 'зеленая, голубая' : 'green, blue'}</span></div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
+                  <MenuItemRow
+                    item={t.items.espresso}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'Бразилия, Кения' : language === 'ru' ? 'Бразилия, Кения' : 'Brazil, Kenya'}</span></>}
+                  />
+                  <MenuItemRow item={t.items.americano} />
+                  <MenuItemRow item={t.items.cappuccino} />
+                  <MenuItemRow item={t.items.latte} />
+                  <MenuItemRow item={t.items.flatWhite} />
+                  <MenuItemRow item={t.items.cocoa} />
+                  <MenuItemRow item={t.items.hotChocolate} />
+                  <MenuItemRow
+                    item={t.items.matchaLatte}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'жасыл, көк' : language === 'ru' ? 'зеленая, голубая' : 'green, blue'}</span></>}
+                  />
                 </tbody>
               </table>
             </div>
@@ -195,14 +161,10 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.signatureCoffee}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.moccaccino} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize
+                    item={t.items.moccaccino}
+                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></>}
+                  />
                   <tr className="menu-row">
                     <td className="menu-cell">
                       <div>{language === 'kz' ? 'Испандық латте' : language === 'ru' ? 'Испанский Латте' : 'Spanish Latte'}</div>
@@ -219,14 +181,10 @@ function MenuContent() {
                       <div className="menu-cell-price-item">2100</div>
                     </td>
                   </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.blueLatte} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2300</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize
+                    item={t.items.blueLatte}
+                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></>}
+                  />
                   <tr className="menu-row">
                     <td className="menu-cell">
                       <div>{language === 'kz' ? 'Раф орео' : language === 'ru' ? 'Раф орео' : 'Oreo Raf'}</div>
@@ -242,17 +200,7 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.alternativeCoffee}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>Фильтр</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2800</div>
-                    </td>
-                  </tr>
+                  <MenuItemRow item={t.items.dripCoffee} />
                 </tbody>
               </table>
             </div>
@@ -260,50 +208,10 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.authorTea}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.karakTea}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">M</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2000</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.seaBuckthorn}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.raspberryMint}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.gingerLemonHoney}</div>
-                    </td>
-                    <td className="menu-cell-size">
-                      <div className="menu-cell-size-item">L</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
+                  <MenuItemRow item={t.items.karakTea} />
+                  <MenuItemRow item={t.items.seaBuckthorn} />
+                  <MenuItemRow item={t.items.raspberryMint} />
+                  <MenuItemRow item={t.items.gingerLemonHoney} />
                 </tbody>
               </table>
             </div>
@@ -311,30 +219,18 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.leafTea}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.earlGrey}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'қара' : language === 'ru' ? 'черный' : 'black'}</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.sencha}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'жасыл' : language === 'ru' ? 'зеленый' : 'green'}</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.jasmine}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'кофеинсіз' : language === 'ru' ? 'без кофеина' : 'decaffeinated'}</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1500</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize
+                    item={t.items.earlGrey}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'қара' : language === 'ru' ? 'черный' : 'black'}</span></>}
+                  />
+                  <MenuItemRowNoSize
+                    item={t.items.sencha}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'жасыл' : language === 'ru' ? 'зеленый' : 'green'}</span></>}
+                  />
+                  <MenuItemRowNoSize
+                    item={t.items.jasmine}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'кофеинсіз' : language === 'ru' ? 'без кофеина' : 'decaffeinated'}</span></>}
+                  />
                 </tbody>
               </table>
             </div>
@@ -344,46 +240,11 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.additional}</h2>
               <table className="menu-table menu-table-additional">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.syrup}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.alternativeMilk}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.lactoseFree}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.decaf}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.cottageCream}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize item={t.items.syrup} />
+                  <MenuItemRowNoSize item={t.items.alternativeMilk} />
+                  <MenuItemRowNoSize item={t.items.lactoseFree} />
+                  <MenuItemRowNoSize item={t.items.decaf} />
+                  <MenuItemRowNoSize item={t.items.cottageCream} />
                 </tbody>
               </table>
             </div>
@@ -398,30 +259,9 @@ function MenuContent() {
               <h2 className="menu-category-title">{language === 'kz' ? 'Салқын авторлық (L)' : language === 'ru' ? 'Холодный авторский (L)' : 'Cold Signature (L)'}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.icedAmericano}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1700</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.icedLatteCappuccino}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">1900</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.icedSpanishLatte}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2500</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize item={t.items.icedAmericano} />
+                  <MenuItemRowNoSize item={t.items.icedLatteCappuccino} />
+                  <MenuItemRowNoSize item={t.items.icedSpanishLatte} />
                   <tr className="menu-row">
                     <td className="menu-cell">
                       <div>{language === 'kz' ? 'Фраппе матча арахис' : language === 'ru' ? 'Фраппе матча арахис' : 'Frappe matcha peanut'} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
@@ -438,14 +278,10 @@ function MenuContent() {
                       <div className="menu-cell-price-item">2800</div>
                     </td>
                   </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.icedMatcha}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'кұлпынай, манго, банан' : language === 'ru' ? 'клубника, манго, банан' : 'strawberry, mango, banana'}</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2700</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize
+                    item={t.items.icedMatcha}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'кұлпынай, манго, банан' : language === 'ru' ? 'клубника, манго, банан' : 'strawberry, mango, banana'}</span></>}
+                  />
                   <tr className="menu-row">
                     <td className="menu-cell">
                       <div>{language === 'kz' ? 'Эспрессо / Матча тоник' : language === 'ru' ? 'Эспрессо / Матча тоник' : 'Espresso / Matcha Tonic'}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'цитрус, таңкурай' : language === 'ru' ? 'малина, грейпфрут, клубника' : 'raspberry, grapefruit, strawberry'}</span></div>
@@ -469,38 +305,13 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.coldDrink}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.mangoPassion}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.raspberryStrawberryLime}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.cherryPear}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.lemonadeAppleCabbage} <span style={{color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8}}>NEW</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2100</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize item={t.items.mangoPassion} />
+                  <MenuItemRowNoSize item={t.items.raspberryStrawberryLime} />
+                  <MenuItemRowNoSize item={t.items.cherryPear} />
+                  <MenuItemRowNoSize
+                    item={t.items.lemonadeAppleCabbage}
+                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></>}
+                  />
                 </tbody>
               </table>
             </div>
@@ -508,14 +319,7 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.fresh}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.orange}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize item={t.items.orange} />
                 </tbody>
               </table>
             </div>
@@ -523,30 +327,15 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.smoothie}</h2>
               <table className="menu-table">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.proteinSmoothie} <img src="/svg/zero.svg" alt="✓" className="inline-icon" /></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3400</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.apple}<br /><span style={{fontSize: '0.9em', color: '#444'}}>{language === 'kz' ? 'коллаген' : language === 'ru' ? 'коллаген' : 'collagen'}</span></div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.pineappleMango}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize
+                    item={t.items.proteinSmoothie}
+                    nameExtra={<><img src="/svg/zero.svg" alt="✓" className="inline-icon" /></>}
+                  />
+                  <MenuItemRowNoSize
+                    item={t.items.apple}
+                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'коллаген' : language === 'ru' ? 'коллаген' : 'collagen'}</span></>}
+                  />
+                  <MenuItemRowNoSize item={t.items.pineappleMango} />
                 </tbody>
               </table>
             </div>
@@ -556,46 +345,11 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.additional}</h2>
               <table className="menu-table menu-table-additional">
                 <tbody>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.syrup}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.alternativeMilk}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.lactoseFree}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">500</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.decaf}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">600</div>
-                    </td>
-                  </tr>
-                  <tr className="menu-row">
-                    <td className="menu-cell">
-                      <div>{t.items.cottageCream}</div>
-                    </td>
-                    <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">300</div>
-                    </td>
-                  </tr>
+                  <MenuItemRowNoSize item={t.items.syrup} />
+                  <MenuItemRowNoSize item={t.items.alternativeMilk} />
+                  <MenuItemRowNoSize item={t.items.lactoseFree} />
+                  <MenuItemRowNoSize item={t.items.decaf} />
+                  <MenuItemRowNoSize item={t.items.cottageCream} />
                 </tbody>
               </table>
             </div>

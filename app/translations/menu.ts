@@ -1,11 +1,13 @@
 interface BreakfastItem {
   name: string;
   description: string;
+  price: number;
 }
 
 interface SeasonalItem {
   name: string;
   description: string;
+  price: number;
 }
 
 export interface MenuItem {
@@ -224,11 +226,11 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       banoffeePieLatte: 'Табиғи банан негізі, сүзбе қалпақшасы және сүт қосылған нәзік кофе сусыны.'
     },
     breakfasts: {
-      ricePorridge: { name: 'Рисовая каша', description: 'Нежная сливочная каша с бананом, свежими ягодами, грецкими орехами и семенами чиа. Идеальный тёплый завтрак для спокойного утра.' },
-      oatmeal: { name: 'Овсяная каша', description: 'Классическая нежная овсянка на молоке с сливочным маслом. По желанию дополняется сметаной, свежими ягодами, жареным бананом, орехами и семенами чиа.' },
-      syrniki: { name: 'Сырники', description: 'Нежные творожные сырники с золотистой корочкой, подаются горячими с соусом, свежими ягодами. Идеальный завтрак или десерт к кофе.' },
-      hashBrownBreakfast: { name: 'Завтрак Хашбраун', description: 'Хрустящие картофельные хашбрауны, нежный сливочный скрембл и слабосоленая сёмга. Подаётся с крем-чизом с авокадо, огурцом и укропом.' },
-      bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.' }
+      ricePorridge: { name: 'Рисовая каша', description: 'Нежная сливочная каша с бананом, свежими ягодами, грецкими орехами и семенами чиа. Идеальный тёплый завтрак для спокойного утра.', price: 2800 },
+      oatmeal: { name: 'Овсяная каша', description: 'Классическая нежная овсянка на молоке с сливочным маслом. По желанию дополняется сметаной, свежими ягодами, жареным бананом, орехами и семенами чиа.', price: 2600 },
+      syrniki: { name: 'Сырники', description: 'Нежные творожные сырники с золотистой корочкой, подаются горячими с соусом, свежими ягодами. Идеальный завтрак или десерт к кофе.', price: 3100 },
+      hashBrownBreakfast: { name: 'Завтрак Хашбраун', description: 'Хрустящие картофельные хашбрауны, нежный сливочный скрембл и слабосоленая сёмга. Подаётся с крем-чизом с авокадо, огурцом и укропом.', price: 4900 },
+      bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.', price: 4400 }
     },
     breakfastsSchedule: 'Завтраки с 8:00 до 12:00',
     iftarSchedule: 'Меню для Ифтара: начиная со времени Магриба — до 23:30',
@@ -236,18 +238,18 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     iftarPromoLink: 'Классика',
     iftarPromoAfter: '» в подарок.',
     iftar: {
-      redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.' },
-      mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.' },
-      fettuccineCreamSauce: { name: 'Фетучини в сливочном соусе', description: 'Фетучини в нежном сливочном соусе с насыщенным, сбалансированным вкусом.' },
-      classicLasagnaMeatRagout: { name: 'Классическая лазанья с мясным рагу', description: 'Слоёная лазанья с сочным мясным рагу, соусом бешамель и тягучим сыром.' }
+      redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.', price: 2800 },
+      mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.', price: 2600 },
+      fettuccineCreamSauce: { name: 'Фетучини в сливочном соусе', description: 'Фетучини в нежном сливочном соусе с насыщенным, сбалансированным вкусом.', price: 4400 },
+      classicLasagnaMeatRagout: { name: 'Классическая лазанья с мясным рагу', description: 'Слоёная лазанья с сочным мясным рагу, соусом бешамель и тягучим сыром.', price: 4900 }
     },
     seasonal: {
-      dateSmoothie: { name: 'Смузи Финик', description: 'Нежный сливочный смузи с мягкой сладостью фиников и солнечной курагой. Бархатная текстура, лёгкие карамельные оттенки и тёплое послевкусие — как первый тёплый день весны.' },
-      pomegranateLimeTea: { name: 'Чай Гранат-лайм', description: 'Ароматный чёрный чай с сочным гранатом и бодрящим лаймом. Свежесть розмарина добавляет зелёную весеннюю нотку и лёгкую прохладу в каждом глотке.' },
-      jasmineGrapeIcedTea: { name: 'Айс ти Жасмин-виноград', description: 'Цветочный жасминовый айс ти с нежным виноградом и спелым персиком. Лёгкий, освежающий и гармоничный — словно прогулка по цветущему саду.' },
-      masalaTea: { name: 'Чай Масала', description: 'Пряный индийский напиток из чёрного чая с молоком, сахаром и специями. Обладает насыщенным вкусом и согревающим ароматом.' },
-      pineappleBananaLemonade: { name: 'Лимонад Ананас-банан', description: 'Яркий лимонад с тропическим ананасом и сладким бананом. Освежающий, сочный и солнечный — как тёплый ветер после долгой зимы.' },
-      oreoCacaoCheeseFoam: { name: 'Какао Орео с шапкой', description: 'Насыщенное шоколадное какао с нежной сырной пенкой и кусочками Орео. Сладкое весеннее настроение в каждом глотке — мягко, сливочно и по-десертному нежно.' }
+      dateSmoothie: { name: 'Смузи Финик', description: 'Нежный сливочный смузи с мягкой сладостью фиников и солнечной курагой. Бархатная текстура, лёгкие карамельные оттенки и тёплое послевкусие — как первый тёплый день весны.', price: 3200 },
+      pomegranateLimeTea: { name: 'Чай Гранат-лайм', description: 'Ароматный чёрный чай с сочным гранатом и бодрящим лаймом. Свежесть розмарина добавляет зелёную весеннюю нотку и лёгкую прохладу в каждом глотке.', price: 2300 },
+      jasmineGrapeIcedTea: { name: 'Айс ти Жасмин-виноград', description: 'Цветочный жасминовый айс ти с нежным виноградом и спелым персиком. Лёгкий, освежающий и гармоничный — словно прогулка по цветущему саду.', price: 2300 },
+      masalaTea: { name: 'Чай Масала', description: 'Пряный индийский напиток из чёрного чая с молоком, сахаром и специями. Обладает насыщенным вкусом и согревающим ароматом.', price: 2100 },
+      pineappleBananaLemonade: { name: 'Лимонад Ананас-банан', description: 'Яркий лимонад с тропическим ананасом и сладким бананом. Освежающий, сочный и солнечный — как тёплый ветер после долгой зимы.', price: 2300 },
+      oreoCacaoCheeseFoam: { name: 'Какао Орео с шапкой', description: 'Насыщенное шоколадное какао с нежной сырной пенкой и кусочками Орео. Сладкое весеннее настроение в каждом глотке — мягко, сливочно и по-десертному нежно.', price: 2300 }
     }
   },
   kz: {
@@ -341,11 +343,11 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       banoffeePieLatte: 'Табиғи банан негізі, сүзбе қалпақшасы және сүт қосылған нәзік кофе сусыны.'
     },
     breakfasts: {
-      ricePorridge: { name: 'Күріш ботқасы', description: 'Сары майлы, нәзік күріш ботқасы. Бананмен, балғын жидектермен, грек жаңғағымен және чиа дәндерімен ұсынылады. Сабырлы таңға арналған мінсіз жылы таңғы ас.' },
-      oatmeal: { name: 'Сұлы ботқасы', description: 'Сүтке дайындалған, сары май қосылған классикалық нәзік сұлы ботқасы. Жидектер, қуырылған банан, жаңғақтар және чиа дәндері қосылады.' },
-      syrniki: { name: 'Ірімшік бәліштері', description: 'Алтын түсті қыртысы бар нәзік ірімшік бәліштері. Ыстық күйде йогуртпен және жидектермен ұсынылады. Кофеге арналған мінсіз таңғы ас, немесе десерт.' },
-      hashBrownBreakfast: { name: 'Хашбраун таңғы асы', description: 'Қытырлақ картоп хашбраундары, нәзік әрі кілегейлі скрэмбл және сәл тұздалған ақсерке балық. Авокадо қосылған крем-чиз, қияр және қымыздықпен бірге ұсынылады.' },
-      bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.' }
+      ricePorridge: { name: 'Күріш ботқасы', description: 'Сары майлы, нәзік күріш ботқасы. Бананмен, балғын жидектермен, грек жаңғағымен және чиа дәндерімен ұсынылады. Сабырлы таңға арналған мінсіз жылы таңғы ас.', price: 2800 },
+      oatmeal: { name: 'Сұлы ботқасы', description: 'Сүтке дайындалған, сары май қосылған классикалық нәзік сұлы ботқасы. Жидектер, қуырылған банан, жаңғақтар және чиа дәндері қосылады.', price: 2600 },
+      syrniki: { name: 'Ірімшік бәліштері', description: 'Алтын түсті қыртысы бар нәзік ірімшік бәліштері. Ыстық күйде йогуртпен және жидектермен ұсынылады. Кофеге арналған мінсіз таңғы ас, немесе десерт.', price: 3100 },
+      hashBrownBreakfast: { name: 'Хашбраун таңғы асы', description: 'Қытырлақ картоп хашбраундары, нәзік әрі кілегейлі скрэмбл және сәл тұздалған ақсерке балық. Авокадо қосылған крем-чиз, қияр және қымыздықпен бірге ұсынылады.', price: 4900 },
+      bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.', price: 4400 }
     },
     breakfastsSchedule: 'Таңғы ас 8:00–12:00',
     iftarSchedule: 'Ауызшашар мәзірі: ақшам уақытынан бастап — 23:30-ға дейін.',
@@ -353,18 +355,18 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     iftarPromoLink: 'Классика',
     iftarPromoAfter: '» сусыны тегін!',
     iftar: {
-      redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.' },
-      mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.' },
-      fettuccineCreamSauce: { name: 'Кілегейлі тұздықтағы фетучини', description: 'Нәзік кілегейлі тұздықтағы, қанық әрі үйлесімді дәмді фетучини.' },
-      classicLasagnaMeatRagout: { name: 'Ет рагуі қосылған классикалық лазанья', description: 'Шырынды ет рагуі, бешамель тұздығы және созылмалы ірімшік қосылған қабатты лазанья.' }
+      redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.', price: 2800 },
+      mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.', price: 2600 },
+      fettuccineCreamSauce: { name: 'Кілегейлі тұздықтағы фетучини', description: 'Нәзік кілегейлі тұздықтағы, қанық әрі үйлесімді дәмді фетучини.', price: 4400 },
+      classicLasagnaMeatRagout: { name: 'Ет рагуі қосылған классикалық лазанья', description: 'Шырынды ет рагуі, бешамель тұздығы және созылмалы ірімшік қосылған қабатты лазанья.', price: 4900 }
     },
     seasonal: {
-      dateSmoothie: { name: 'Құрма смузиі', description: 'Құрманың жұмсақ тәттілігі мен күндей жарқыраған өрік қағы қосылған нәзік кілегейлі смузи. Барқыттай құрылым, жеңіл қарамель реңктері мен көктемнің алғашқы жылы күніндей жылы дәм.' },
-      pomegranateLimeTea: { name: 'Анар-лайм шайы', description: 'Шырынды анар мен сергітетін лайм қосылған хош иісті қара шай. Розмарин балғындығы әр жұтымға көктемгі жасыл реңк пен жеңіл салқындық сыйлайды.' },
-      jasmineGrapeIcedTea: { name: 'Жасмин-жүзім айс-тиі', description: 'Нәзік жүзім мен піскен шабдалы қосылған гүлді жасмин айс-тиі. Гүлдеген бақтағы серуендей жеңіл, сергітетін әрі үйлесімді сусын.' },
-      masalaTea: { name: 'Масала шайы', description: 'Қара шай, сүт, қант және дәмдеуіштерден дайындалған үндінің хош иісті сусыны. Қанық дәм мен жылытатын хош иіске ие.' },
-      pineappleBananaLemonade: { name: 'Ананас-банан лимонады', description: 'Тропикалық ананас пен тәтті банан қосылған жарқын лимонад. Сергітетін, шырынды әрі шуақты – ұзақ қыстан кейінгі жылы желдей асер береді.' },
-      oreoCacaoCheeseFoam: { name: 'Ірімшік көбігі бар Орео какаосы', description: 'Қанық шоколадты какао, назік ірімшік көбігі және Оreо кесектері. Әр жұтымдағы көктемгі тәтті көңіл-күй – жұмсақ, кілегейлі әрі десерттей назік.' }
+      dateSmoothie: { name: 'Құрма смузиі', description: 'Құрманың жұмсақ тәттілігі мен күндей жарқыраған өрік қағы қосылған нәзік кілегейлі смузи. Барқыттай құрылым, жеңіл қарамель реңктері мен көктемнің алғашқы жылы күніндей жылы дәм.', price: 3200 },
+      pomegranateLimeTea: { name: 'Анар-лайм шайы', description: 'Шырынды анар мен сергітетін лайм қосылған хош иісті қара шай. Розмарин балғындығы әр жұтымға көктемгі жасыл реңк пен жеңіл салқындық сыйлайды.', price: 2300 },
+      jasmineGrapeIcedTea: { name: 'Жасмин-жүзім айс-тиі', description: 'Нәзік жүзім мен піскен шабдалы қосылған гүлді жасмин айс-тиі. Гүлдеген бақтағы серуендей жеңіл, сергітетін әрі үйлесімді сусын.', price: 2300 },
+      masalaTea: { name: 'Масала шайы', description: 'Қара шай, сүт, қант және дәмдеуіштерден дайындалған үндінің хош иісті сусыны. Қанық дәм мен жылытатын хош иіске ие.', price: 2100 },
+      pineappleBananaLemonade: { name: 'Ананас-банан лимонады', description: 'Тропикалық ананас пен тәтті банан қосылған жарқын лимонад. Сергітетін, шырынды әрі шуақты – ұзақ қыстан кейінгі жылы желдей асер береді.', price: 2300 },
+      oreoCacaoCheeseFoam: { name: 'Ірімшік көбігі бар Орео какаосы', description: 'Қанық шоколадты какао, назік ірімшік көбігі және Оreо кесектері. Әр жұтымдағы көктемгі тәтті көңіл-күй – жұмсақ, кілегейлі әрі десерттей назік.', price: 2300 }
     }
   },
   en: {
@@ -458,11 +460,11 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       banoffeePieLatte: 'Delicate coffee drink with natural banana base, cottage cheese cap and milk.'
     },
     breakfasts: {
-      ricePorridge: { name: 'Rice Porridge', description: 'Creamy rice porridge with banana, fresh berries, walnuts and chia seeds. A perfect warm breakfast for a calm morning.' },
-      oatmeal: { name: 'Oatmeal', description: 'Classic creamy oatmeal with milk and butter. Topped with berries, fried banana, nuts and chia seeds.' },
-      syrniki: { name: 'Syrniki', description: 'Tender cottage cheese pancakes with a golden crust, served hot with yogurt and fresh berries. An ideal breakfast with coffee or dessert.' },
-      hashBrownBreakfast: { name: 'Hash Brown Breakfast', description: 'Crispy potato hash browns, creamy scrambled eggs and lightly salted salmon. Served with avocado cream cheese, cucumber and dill.' },
-      bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.' }
+      ricePorridge: { name: 'Rice Porridge', description: 'Creamy rice porridge with banana, fresh berries, walnuts and chia seeds. A perfect warm breakfast for a calm morning.', price: 2800 },
+      oatmeal: { name: 'Oatmeal', description: 'Classic creamy oatmeal with milk and butter. Topped with berries, fried banana, nuts and chia seeds.', price: 2600 },
+      syrniki: { name: 'Syrniki', description: 'Tender cottage cheese pancakes with a golden crust, served hot with yogurt and fresh berries. An ideal breakfast with coffee or dessert.', price: 3100 },
+      hashBrownBreakfast: { name: 'Hash Brown Breakfast', description: 'Crispy potato hash browns, creamy scrambled eggs and lightly salted salmon. Served with avocado cream cheese, cucumber and dill.', price: 4900 },
+      bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.', price: 4400 }
     },
     breakfastsSchedule: 'Breakfasts 8:00–12:00',
     iftarSchedule: 'Iftar menu: from Maghrib time — until 23:30',
@@ -470,18 +472,18 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     iftarPromoLink: 'Classic',
     iftarPromoAfter: '» category for free.',
     iftar: {
-      redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.' },
-      mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.' },
-      fettuccineCreamSauce: { name: 'Fettuccine in Cream Sauce', description: 'Fettuccine in a delicate cream sauce with a rich, balanced taste.' },
-      classicLasagnaMeatRagout: { name: 'Classic Lasagna with Meat Ragout', description: 'Layered lasagna with juicy meat ragout, béchamel sauce and stringy cheese.' }
+      redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.', price: 2800 },
+      mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.', price: 2600 },
+      fettuccineCreamSauce: { name: 'Fettuccine in Cream Sauce', description: 'Fettuccine in a delicate cream sauce with a rich, balanced taste.', price: 4400 },
+      classicLasagnaMeatRagout: { name: 'Classic Lasagna with Meat Ragout', description: 'Layered lasagna with juicy meat ragout, béchamel sauce and stringy cheese.', price: 4900 }
     },
     seasonal: {
-      dateSmoothie: { name: 'Date Smoothie', description: 'Gentle creamy smoothie with the soft sweetness of dates and sunny apricots. Velvety texture, light caramel notes and a warm aftertaste – like the first warm day of spring.' },
-      pomegranateLimeTea: { name: 'Pomegranate-Lime Tea', description: 'Aromatic black tea with juicy pomegranate and invigorating lime. The freshness of rosemary adds a green spring note and light coolness in every sip.' },
-      jasmineGrapeIcedTea: { name: 'Jasmine-Grape Iced Tea', description: 'Floral jasmine iced tea with delicate grapes and ripe peaches. Light, refreshing and harmonious – like a stroll through a blossoming garden.' },
-      masalaTea: { name: 'Masala Tea', description: 'Spicy Indian drink made from black tea with milk, sugar and spices. Has a rich taste and warming aroma.' },
-      pineappleBananaLemonade: { name: 'Pineapple-Banana Lemonade', description: 'Bright lemonade with tropical pineapple and sweet banana. Refreshing, juicy and sunny – like a warm wind after a long winter.' },
-      oreoCacaoCheeseFoam: { name: 'Oreo Cacao with Cheese Foam', description: 'Rich chocolate cacao with delicate cheese foam and Oreo pieces. Sweet spring mood in every sip – soft, creamy and dessert-like delicate.' }
+      dateSmoothie: { name: 'Date Smoothie', description: 'Gentle creamy smoothie with the soft sweetness of dates and sunny apricots. Velvety texture, light caramel notes and a warm aftertaste – like the first warm day of spring.', price: 3200 },
+      pomegranateLimeTea: { name: 'Pomegranate-Lime Tea', description: 'Aromatic black tea with juicy pomegranate and invigorating lime. The freshness of rosemary adds a green spring note and light coolness in every sip.', price: 2300 },
+      jasmineGrapeIcedTea: { name: 'Jasmine-Grape Iced Tea', description: 'Floral jasmine iced tea with delicate grapes and ripe peaches. Light, refreshing and harmonious – like a stroll through a blossoming garden.', price: 2300 },
+      masalaTea: { name: 'Masala Tea', description: 'Spicy Indian drink made from black tea with milk, sugar and spices. Has a rich taste and warming aroma.', price: 2100 },
+      pineappleBananaLemonade: { name: 'Pineapple-Banana Lemonade', description: 'Bright lemonade with tropical pineapple and sweet banana. Refreshing, juicy and sunny – like a warm wind after a long winter.', price: 2300 },
+      oreoCacaoCheeseFoam: { name: 'Oreo Cacao with Cheese Foam', description: 'Rich chocolate cacao with delicate cheese foam and Oreo pieces. Sweet spring mood in every sip – soft, creamy and dessert-like delicate.', price: 2300 }
     }
   }
 }; 

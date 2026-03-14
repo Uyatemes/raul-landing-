@@ -369,7 +369,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">3200</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.dateSmoothie.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -384,7 +384,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.pomegranateLimeTea.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -399,7 +399,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.jasmineGrapeIcedTea.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -414,7 +414,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">2100</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.masalaTea.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -429,7 +429,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.pineappleBananaLemonade.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -444,7 +444,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">2300</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.oreoCacaoCheeseFoam.price}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -471,7 +471,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2800</div>
+                      <div className="menu-cell-price-item">{t.breakfasts.ricePorridge.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -492,7 +492,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2600</div>
+                      <div className="menu-cell-price-item">{t.breakfasts.oatmeal.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -513,7 +513,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">3100</div>
+                      <div className="menu-cell-price-item">{t.breakfasts.syrniki.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -534,7 +534,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">4900</div>
+                      <div className="menu-cell-price-item">{t.breakfasts.hashBrownBreakfast.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -555,7 +555,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">4400</div>
+                      <div className="menu-cell-price-item">{t.breakfasts.bavarianBreakfast.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -580,7 +580,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2800</div>
+                      <div className="menu-cell-price-item">{t.iftar.redLentilCreamSoup.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -596,7 +596,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">2600</div>
+                      <div className="menu-cell-price-item">{t.iftar.mushroomCreamSoup.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -612,7 +612,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">4400</div>
+                      <div className="menu-cell-price-item">{t.iftar.fettuccineCreamSauce.price}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -628,7 +628,7 @@ function MenuContent() {
                 <tbody>
                   <tr className="menu-row">
                     <td className="menu-cell-price">
-                      <div className="menu-cell-price-item">4900</div>
+                      <div className="menu-cell-price-item">{t.iftar.classicLasagnaMeatRagout.price}</div>
                     </td>
                   </tr>
                 </tbody>

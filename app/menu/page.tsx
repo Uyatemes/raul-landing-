@@ -65,7 +65,7 @@ function MenuContent() {
   
   // Get active tab from URL or default to 'hot'
   const tabFromUrl = searchParams.get('tab');
-  const validTabs = ['hot', 'cold', 'seasonal', 'breakfasts', 'iftar'];
+  const validTabs = ['hot', 'cold', 'seasonal', 'breakfasts', 'main'];
   const initialTab = tabFromUrl && validTabs.includes(tabFromUrl) ? tabFromUrl : 'hot';
   const [activeTab, setActiveTab] = useState(initialTab);
 
@@ -128,8 +128,8 @@ function MenuContent() {
             {t.categories.breakfasts}
           </button>
           <button
-            className={`menu-tab ${activeTab === 'iftar' ? 'active' : ''}`}
-            onClick={() => handleTabChange('iftar')}
+            className={`menu-tab ${activeTab === 'main' ? 'active' : ''}`}
+            onClick={() => handleTabChange('main')}
           >
             {t.categories.iftar}
           </button>
@@ -567,7 +567,7 @@ function MenuContent() {
             <p className="menu-allergy-notice">* {language === 'kz' ? 'егер сізде тағамдық аллергия немесе жеке көтере алмаушылық болса, баристаға алдын ала ескертіңіз.' : language === 'ru' ? 'Если у вас есть пищевая аллергия или индивидуальная непереносимость, пожалуйста, сообщите об этом бариста заранее.' : 'If you have food allergies or individual intolerance, please inform the barista in advance.'}</p>
           </div>
         </div>
-        <div className={`menu-content menu-content-iftar ${activeTab === 'iftar' ? 'active' : ''}`}>
+        <div className={`menu-content menu-content-iftar ${activeTab === 'main' ? 'active' : ''}`}>
           <p className="breakfasts-schedule">{t.iftarSchedule}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 min-[955px]:grid-cols-3 gap-8">
             <div className="menu-category">

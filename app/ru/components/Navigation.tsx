@@ -8,15 +8,9 @@ import { navigationTranslations } from '../../translations/navigation';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-    setIsDark(pathname === '/ru');
-  }, [pathname]);
+  const isDark = pathname === '/ru';
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -36,9 +30,7 @@ export default function Navigation() {
     }, 300);
   };
 
-  const navClassName = mounted 
-    ? `nav-container ${isDark ? 'dark' : 'light'} ${isMenuOpen ? 'menu-open' : ''}`
-    : `nav-container dark ${isMenuOpen ? 'menu-open' : ''}`;
+  const navClassName = `nav-container ${isDark ? 'dark' : 'light'} ${isMenuOpen ? 'menu-open' : ''}`;
 
   return (
     <>
@@ -48,7 +40,7 @@ export default function Navigation() {
           <div className="flex items-center gap-8">
             {/* Burger Menu Button */}
             <button
-              className={`md:hidden burger-button ${mounted && isDark ? 'text-white' : 'text-black'}`}
+              className={`md:hidden burger-button ${isDark ? 'text-white' : 'text-black'}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={navigationTranslations.ru.menu}
               suppressHydrationWarning
@@ -61,26 +53,26 @@ export default function Navigation() {
             </button>
 
             <Link href="/ru" className="hover:opacity-70 transition-opacity">
-              <img src="/svg/r.svg" alt="R" className={`h-6 ${mounted && isDark ? 'invert' : ''}`} suppressHydrationWarning />
+              <img src="/svg/r.svg" alt="R" className={`h-6 ${isDark ? 'invert' : ''}`} suppressHydrationWarning />
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <Link
                 href="/ru/menu"
-                className={`nav-link ${mounted && pathname === '/ru/menu' ? 'font-bold' : ''}`}
+                className={`nav-link ${pathname === '/ru/menu' ? 'font-bold' : ''}`}
                 suppressHydrationWarning
               >
                 {navigationTranslations.ru.menu}
               </Link>
               <Link
                 href="/ru/about"
-                className={`nav-link ${mounted && pathname === '/ru/about' ? 'font-bold' : ''}`}
+                className={`nav-link ${pathname === '/ru/about' ? 'font-bold' : ''}`}
                 suppressHydrationWarning
               >
                 {navigationTranslations.ru.about}
               </Link>
               <Link
                 href="/ru/contacts"
-                className={`nav-link ${mounted && pathname === '/ru/contacts' ? 'font-bold' : ''}`}
+                className={`nav-link ${pathname === '/ru/contacts' ? 'font-bold' : ''}`}
                 suppressHydrationWarning
               >
                 {navigationTranslations.ru.contacts}
@@ -90,7 +82,7 @@ export default function Navigation() {
 
           {/* Right Side - Social Icons */}
           <div className="flex items-center gap-6">
-            {mounted && pathname !== '/ru/contacts' && (
+            {pathname !== '/ru/contacts' && (
               <>
                 <a href="https://www.instagram.com/coffee.raul/" target="_blank" rel="noopener noreferrer" className="nav-link">
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +105,7 @@ export default function Navigation() {
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/>
                   </svg>
                 </a>
-                <a href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" target="_blank" rel="noopener noreferrer" className={`nav-link ${mounted && isDark ? 'text-white' : 'text-black'}`} suppressHydrationWarning>
+                <a href="https://2gis.kz/astana/search/raul/firm/70000001091828086?m=71.466203%2C51.102622%2F13.66" target="_blank" rel="noopener noreferrer" className={`nav-link ${isDark ? 'text-white' : 'text-black'}`} suppressHydrationWarning>
                   <svg className="w-6 h-6" viewBox="0 0 566 586" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M419.825 348.408C317.939 348.925 301.458 412.547 295.966 466.342L293.469 490.135H272.99L270.493 466.342C265.001 412.547 248.02 348.925 149.63 348.408C133.149 313.232 126.157 284.783 126.157 252.714C126.157 172.541 189.586 97.5362 283.478 97.5362C377.372 97.5362 439.802 172.021 439.802 253.233C439.802 284.783 436.806 313.232 419.825 348.408ZM282.481 0.291992C127.657 0.291992 0.798828 131.676 0.798828 292.541C0.798828 453.927 127.657 585.309 282.481 585.309C438.802 585.309 565.161 453.927 565.161 292.541C565.161 131.677 438.802 0.291992 282.481 0.291992Z" fill="currentColor"/>
                   </svg>
@@ -126,7 +118,7 @@ export default function Navigation() {
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-content">
-            {mounted && pathname !== '/ru' && (
+            {pathname !== '/ru' && (
               <button 
                 className={`mobile-nav-link ${pathname === '/ru' ? 'font-bold' : ''}`}
                 onClick={() => handleNavigation('/ru')}
@@ -135,21 +127,21 @@ export default function Navigation() {
               </button>
             )}
             <button 
-              className={`mobile-nav-link ${mounted && pathname === '/ru/menu' ? 'font-bold' : ''}`}
+              className={`mobile-nav-link ${pathname === '/ru/menu' ? 'font-bold' : ''}`}
               onClick={() => handleNavigation('/ru/menu')}
               suppressHydrationWarning
             >
               {navigationTranslations.ru.menu}
             </button>
             <button 
-              className={`mobile-nav-link ${mounted && pathname === '/ru/about' ? 'font-bold' : ''}`}
+              className={`mobile-nav-link ${pathname === '/ru/about' ? 'font-bold' : ''}`}
               onClick={() => handleNavigation('/ru/about')}
               suppressHydrationWarning
             >
               {navigationTranslations.ru.about}
             </button>
             <button 
-              className={`mobile-nav-link ${mounted && pathname === '/ru/contacts' ? 'font-bold' : ''}`}
+              className={`mobile-nav-link ${pathname === '/ru/contacts' ? 'font-bold' : ''}`}
               onClick={() => handleNavigation('/ru/contacts')}
               suppressHydrationWarning
             >

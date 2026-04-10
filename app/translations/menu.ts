@@ -22,7 +22,6 @@ interface MenuTranslations {
     coldDrinks: string;
     seasonal: string;
     breakfasts: string;
-    iftar: string;
     coffee: string;
     signatureCoffee: string;
     alternativeCoffee: string;
@@ -75,6 +74,7 @@ interface MenuTranslations {
     icedAmericano: MenuItem;
     icedLatteCappuccino: MenuItem;
     icedSpanishLatte: MenuItem;
+    coldBrew: MenuItem;
     icedMatcha: MenuItem;
     frappeBenvito: MenuItem;
     peachAlmond: MenuItem;
@@ -114,16 +114,6 @@ interface MenuTranslations {
     bavarianBreakfast: BreakfastItem;
   };
   breakfastsSchedule: string;
-  iftarSchedule: string;
-  iftarPromoBefore: string;
-  iftarPromoLink: string;
-  iftarPromoAfter: string;
-  iftar: {
-    redLentilCreamSoup: BreakfastItem;
-    mushroomCreamSoup: BreakfastItem;
-    fettuccineCreamSauce: BreakfastItem;
-    classicLasagnaMeatRagout: BreakfastItem;
-  };
   seasonal: {
     dateSmoothie: SeasonalItem;
     pomegranateLimeTea: SeasonalItem;
@@ -141,7 +131,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'Холодные напитки',
       seasonal: 'Сезонное меню',
       breakfasts: 'Завтраки',
-      iftar: 'Основное меню',
       coffee: 'Классика',
       signatureCoffee: 'Авторский кофе',
       alternativeCoffee: 'Альтернативный кофе',
@@ -153,7 +142,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       lemonade: 'Лимонад (L)',
       cocktail: 'Коктейль (L)',
       espressoTonic: 'Эспрессо тоник (L)',
-      fresh: 'Фреш (L)',
+      fresh: 'Фреш (M)',
       smoothie: 'Смузи (L)',
       bumble: 'Бамбл (L)',
       additional: 'Дополнительно'
@@ -191,14 +180,15 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       mangoPassion: { name: 'Манго-Маракуйя', price: 2100 },
       raspberryStrawberryLime: { name: 'Таңқурай / Құлпынай лайм', price: 2100 },
       cherryPear: { name: 'Шие алмұрт', price: 2100 },
-      icedAmericano: { name: 'Мұзды Американо', price: 1700 },
-      icedLatteCappuccino: { name: 'Мұзды Латте / Капучино', price: 1900 },
-      icedSpanishLatte: { name: 'Мұзды Испан латте', price: 2500 },
-      icedMatcha: { name: 'Мұзды Матча', price: 2700 },
-      frappeBenvito: { name: 'Фраппе Benvito', price: 2800 },
-      peachAlmond: { name: 'Персик-Миндаль', price: 2900 },
-      appleKiwi: { name: 'Алма-Киви', price: 2100 },
-      pineappleBanana: { name: 'Ананас-Банан', price: 2200 },
+      icedAmericano: { name: 'Айс Американо', price: 1700, sizes: ['M'] },
+      icedLatteCappuccino: { name: 'Айс Латте / Капучино', price: 1900, sizes: ['M'] },
+      icedSpanishLatte: { name: 'Айс Испанский латте', price: 2500, sizes: ['M'] },
+      coldBrew: { name: 'Колд брю', price: 2200, sizes: ['M'] },
+      icedMatcha: { name: 'Айс Матча', price: 2700, sizes: ['M'] },
+      frappeBenvito: { name: 'Фраппучино белвита', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Фраппе матча арахис', price: 2900, sizes: ['L'] },
+      appleKiwi: { name: 'Эспрессо / Матча тоник', price: 2100, sizes: ['M'] },
+      pineappleBanana: { name: 'Бамбл', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Лимонад - Яблоко капуста', price: 2100 },
       cherry: { name: 'Шие', price: 2100 },
       duchess: { name: 'Дюшес', price: 2100 },
@@ -219,7 +209,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       lactoseFree: { name: '+ Лактозасыз', price: 500 }
     },
     descriptions: {
-      icedMatcha: '(шабдалы, манго, құлпынай)',
+      icedMatcha: '(клубника, манго, банан)',
       dateSmoothie: 'Табиғи патша құрма мен өрікті сүт негізіндегі қанық және нәрлі сусын.',
       strawberryBanana: 'Тәтті құлпынай мен піскен банан пюресінен жасалған сергітетін сусын. Хош иісті жалбыз бен газдалған су қосылады.',
       grapefruitPearTea: 'Грейпфрут пен алмұрт пюресі, жасыл жапырақты шай мен розмарин қосылған хош иісті жылытатын сусын.',
@@ -233,16 +223,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Баварский завтрак', description: 'Сытный завтрак с охотничьими колбасками, глазуньей из двух яиц, тёплой фасолью, хрустящими тостами, маринованными огурцами и с фирменным соусом.', price: 4400 }
     },
     breakfastsSchedule: 'Завтраки с 8:00 до 15:00',
-    iftarSchedule: 'Основное меню доступно ежедневно с 15:00 до 23:30.',
-    iftarPromoBefore: 'К заказу из Ифтар-меню — напиток из категории «',
-    iftarPromoLink: 'Классика',
-    iftarPromoAfter: '» в подарок.',
-    iftar: {
-      redLentilCreamSoup: { name: 'Крем-суп из красной чечевицы', description: 'Нежный крем-суп с пряными нотами и лёгкой кислинкой лимона. Сытный и согревающий.', price: 2800 },
-      mushroomCreamSoup: { name: 'Крем-суп из шампиньонов', description: 'Ароматный грибной крем-суп со сливочной текстурой и мягким вкусом.', price: 2600 },
-      fettuccineCreamSauce: { name: 'Фетучини в сливочном соусе', description: 'Фетучини в нежном сливочном соусе с насыщенным, сбалансированным вкусом.', price: 4400 },
-      classicLasagnaMeatRagout: { name: 'Классическая лазанья с мясным рагу', description: 'Слоёная лазанья с сочным мясным рагу, соусом бешамель и тягучим сыром.', price: 4900 }
-    },
     seasonal: {
       dateSmoothie: { name: 'Смузи Финик', description: 'Нежный сливочный смузи с мягкой сладостью фиников и солнечной курагой. Бархатная текстура, лёгкие карамельные оттенки и тёплое послевкусие — как первый тёплый день весны.', price: 3200 },
       pomegranateLimeTea: { name: 'Чай Гранат-лайм', description: 'Ароматный чёрный чай с сочным гранатом и бодрящим лаймом. Свежесть розмарина добавляет зелёную весеннюю нотку и лёгкую прохладу в каждом глотке.', price: 2300 },
@@ -258,7 +238,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'САЛҚЫН СУСЫНДАР',
       seasonal: 'МАУСЫМДЫҚ МӘЗIP',
       breakfasts: 'ТАҢҒЫ АС',
-      iftar: 'НЕГІЗГІ АС МӘЗІР',
       coffee: 'Классика',
       signatureCoffee: 'Авторлық кофе (М)',
       alternativeCoffee: 'Альтернативті кофе',
@@ -270,7 +249,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       lemonade: 'Лимонад (L)',
       cocktail: 'Коктейль (L)',
       espressoTonic: 'Эспрессо тоник (L)',
-      fresh: 'Фреш (L)',
+      fresh: 'Фреш (M)',
       smoothie: 'Смузи (L)',
       bumble: 'Бамбл (L)',
       additional: 'Қосымша'
@@ -308,14 +287,15 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       mangoPassion: { name: 'Айс ти - Манго-маракуйя', price: 2100 },
       raspberryStrawberryLime: { name: 'Айс-ти - Таңкурай/Құлпынай лайм', price: 2100 },
       cherryPear: { name: 'Лимонад - Ананас-қымыздық', price: 2100 },
-      icedAmericano: { name: 'Айс Американо', price: 1700 },
-      icedLatteCappuccino: { name: 'Айс Латте / Капучино', price: 1900 },
-      icedSpanishLatte: { name: 'Айс Испандық латте', price: 2500 },
-      icedMatcha: { name: 'Айс Матча', price: 2700 },
-      frappeBenvito: { name: 'Фраппучино Белвита', price: 2800 },
-      peachAlmond: { name: 'Фраппе матча арахис', price: 2900 },
-      appleKiwi: { name: 'Эспрессо / Матча тоник', price: 2100 },
-      pineappleBanana: { name: 'Бамбл', price: 2200 },
+      icedAmericano: { name: 'Айс Американо', price: 1700, sizes: ['M'] },
+      icedLatteCappuccino: { name: 'Айс Латте / Капучино', price: 1900, sizes: ['M'] },
+      icedSpanishLatte: { name: 'Айс Испандық латте', price: 2500, sizes: ['M'] },
+      coldBrew: { name: 'Колд брю', price: 2200, sizes: ['M'] },
+      icedMatcha: { name: 'Айс Матча', price: 2700, sizes: ['M'] },
+      frappeBenvito: { name: 'Фраппучино Белвита', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Фраппе матча арахис', price: 2900, sizes: ['L'] },
+      appleKiwi: { name: 'Эспрессо / Матча тоник', price: 2100, sizes: ['M'] },
+      pineappleBanana: { name: 'Бамбл', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Лимонад - Алма-қырыққабат', price: 2100 },
       cherry: { name: 'Шие', price: 2100 },
       duchess: { name: 'Дюшес', price: 2100 },
@@ -350,16 +330,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Бавариялық таңғы ас', description: 'Аңшылық шұжықтары, екі жұмыртқадан жасалған глазунья, жылы бұршақ, қытырлақ тосттар және маринадталған қиярлар. Фирмалық соус қосылған тойымды таңғы ас.', price: 4400 }
     },
     breakfastsSchedule: 'Таңғы ас 8:00–15:00',
-    iftarSchedule: 'Негізгі мәзір күн сайын 15:00-ден 23:30-ға дейін қолжетімді.',
-    iftarPromoBefore: 'Ауызашар мәзірі: Кез келген тағамға «',
-    iftarPromoLink: 'Классика',
-    iftarPromoAfter: '» сусыны тегін!',
-    iftar: {
-      redLentilCreamSoup: { name: 'Қызыл жасымық крем-сорпасы', description: 'Дәмдеуіштердің хош иісі мен лимонның жеңіл қышқылдығы бар нәзік крем-сорпа. Тойымды әрі жылытатын тағам.', price: 2800 },
-      mushroomCreamSoup: { name: 'Шампиньон крем-сорпасы', description: 'Кілегейлі құрылымды және жұмсақ дәмді, хош иісті саңырауқұлақ крем-сорпасы.', price: 2600 },
-      fettuccineCreamSauce: { name: 'Кілегейлі тұздықтағы фетучини', description: 'Нәзік кілегейлі тұздықтағы, қанық әрі үйлесімді дәмді фетучини.', price: 4400 },
-      classicLasagnaMeatRagout: { name: 'Ет рагуі қосылған классикалық лазанья', description: 'Шырынды ет рагуі, бешамель тұздығы және созылмалы ірімшік қосылған қабатты лазанья.', price: 4900 }
-    },
     seasonal: {
       dateSmoothie: { name: 'Құрма смузиі', description: 'Құрманың жұмсақ тәттілігі мен күндей жарқыраған өрік қағы қосылған нәзік кілегейлі смузи. Барқыттай құрылым, жеңіл қарамель реңктері мен көктемнің алғашқы жылы күніндей жылы дәм.', price: 3200 },
       pomegranateLimeTea: { name: 'Анар-лайм шайы', description: 'Шырынды анар мен сергітетін лайм қосылған хош иісті қара шай. Розмарин балғындығы әр жұтымға көктемгі жасыл реңк пен жеңіл салқындық сыйлайды.', price: 2300 },
@@ -375,7 +345,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       coldDrinks: 'Cold Drinks',
       seasonal: 'Seasonal Menu',
       breakfasts: 'Breakfasts',
-      iftar: 'Main Menu',
       coffee: 'Coffee',
       signatureCoffee: 'Signature Coffee',
       alternativeCoffee: 'Alternative Coffee',
@@ -387,7 +356,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       lemonade: 'Lemonade (L)',
       cocktail: 'Cocktail (L)',
       espressoTonic: 'Espresso Tonic (L)',
-      fresh: 'Fresh (L)',
+      fresh: 'Fresh (M)',
       smoothie: 'Smoothie (L)',
       bumble: 'Bumble (L)',
       additional: 'Additional'
@@ -425,14 +394,15 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       mangoPassion: { name: 'Mango-Passion Fruit', price: 2100 },
       raspberryStrawberryLime: { name: 'Raspberry / Strawberry Lime', price: 2100 },
       cherryPear: { name: 'Cherry Pear', price: 2100 },
-      icedAmericano: { name: 'Iced Americano', price: 1700 },
-      icedLatteCappuccino: { name: 'Iced Latte / Cappuccino', price: 1900 },
-      icedSpanishLatte: { name: 'Iced Spanish Latte', price: 2500 },
-      icedMatcha: { name: 'Iced Matcha', price: 2700 },
-      frappeBenvito: { name: 'Frappe Benvito', price: 2800 },
-      peachAlmond: { name: 'Peach-Almond', price: 2900 },
-      appleKiwi: { name: 'Apple-Kiwi', price: 2100 },
-      pineappleBanana: { name: 'Pineapple-Banana', price: 2200 },
+      icedAmericano: { name: 'Iced Americano', price: 1700, sizes: ['M'] },
+      icedLatteCappuccino: { name: 'Iced Latte / Cappuccino', price: 1900, sizes: ['M'] },
+      icedSpanishLatte: { name: 'Iced Spanish Latte', price: 2500, sizes: ['M'] },
+      coldBrew: { name: 'Cold Brew', price: 2200, sizes: ['M'] },
+      icedMatcha: { name: 'Iced Matcha', price: 2700, sizes: ['M'] },
+      frappeBenvito: { name: 'Frappuccino Belvita', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Frappe matcha peanut', price: 2900, sizes: ['L'] },
+      appleKiwi: { name: 'Espresso / Matcha Tonic', price: 2100, sizes: ['M'] },
+      pineappleBanana: { name: 'Bumble', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Lemonade - Apple cabbage', price: 2100 },
       cherry: { name: 'Cherry', price: 2100 },
       duchess: { name: 'Duchess', price: 2100 },
@@ -467,16 +437,6 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       bavarianBreakfast: { name: 'Bavarian Breakfast', description: 'Hearty breakfast with hunter sausages, two fried eggs, warm beans, crispy toast, pickled cucumbers and signature sauce.', price: 4400 }
     },
     breakfastsSchedule: 'Breakfasts 8:00–15:00',
-    iftarSchedule: 'Main menu is available daily from 15:00 to 23:30.',
-    iftarPromoBefore: 'With any order from Iftar menu — a drink from «',
-    iftarPromoLink: 'Classic',
-    iftarPromoAfter: '» category for free.',
-    iftar: {
-      redLentilCreamSoup: { name: 'Red Lentil Cream Soup', description: 'Tender cream soup with spicy notes and a slight lemon tartness. Hearty and warming.', price: 2800 },
-      mushroomCreamSoup: { name: 'Mushroom Cream Soup', description: 'Aromatic mushroom cream soup with a creamy texture and mild taste.', price: 2600 },
-      fettuccineCreamSauce: { name: 'Fettuccine in Cream Sauce', description: 'Fettuccine in a delicate cream sauce with a rich, balanced taste.', price: 4400 },
-      classicLasagnaMeatRagout: { name: 'Classic Lasagna with Meat Ragout', description: 'Layered lasagna with juicy meat ragout, béchamel sauce and stringy cheese.', price: 4900 }
-    },
     seasonal: {
       dateSmoothie: { name: 'Date Smoothie', description: 'Gentle creamy smoothie with the soft sweetness of dates and sunny apricots. Velvety texture, light caramel notes and a warm aftertaste – like the first warm day of spring.', price: 3200 },
       pomegranateLimeTea: { name: 'Pomegranate-Lime Tea', description: 'Aromatic black tea with juicy pomegranate and invigorating lime. The freshness of rosemary adds a green spring note and light coolness in every sip.', price: 2300 },

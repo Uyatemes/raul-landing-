@@ -1,25 +1,19 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 export default function Footer() {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isMenuPage = mounted && pathname === '/ru/menu';
-  const isHomePage = mounted && pathname === '/ru';
+  const isMenuPage = pathname === '/ru/menu';
+  const isHomePage = pathname === '/ru';
 
   return (
     <footer className="footer">
       <div className="footer-content">
         {isMenuPage && (
-          <div className="menu-update-date">Меню обновлено 26.03.2026</div>
+          <div className="menu-update-date">Меню обновлено 11.04.2026</div>
         )}
         {!isHomePage && (
           <div className="footer-language-switcher">

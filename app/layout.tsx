@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import ConditionalNavigation from './components/ConditionalNavigation'
 import { LanguageProvider } from './context/LanguageContext'
@@ -23,6 +24,7 @@ export default function RootLayout({
           <ConditionalNavigation />
           {children}
         </LanguageProvider>
+        <SpeedInsights />
       </body>
     </html>
   )

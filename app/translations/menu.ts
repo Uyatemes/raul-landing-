@@ -8,6 +8,7 @@ interface SeasonalItem {
   name: string;
   description: string;
   price: number;
+  size: string;
 }
 
 export interface MenuItem {
@@ -115,12 +116,12 @@ interface MenuTranslations {
   };
   breakfastsSchedule: string;
   seasonal: {
-    dateSmoothie: SeasonalItem;
-    pomegranateLimeTea: SeasonalItem;
-    jasmineGrapeIcedTea: SeasonalItem;
-    masalaTea: SeasonalItem;
-    pineappleBananaLemonade: SeasonalItem;
-    oreoCacaoCheeseFoam: SeasonalItem;
+    affogato: SeasonalItem;
+    berryJasmineIcedTea: SeasonalItem;
+    kombuchaRoseFoam: SeasonalItem;
+    berryNitro: SeasonalItem;
+    pinaColada: SeasonalItem;
+    slushCoffee: SeasonalItem;
   };
 }
 
@@ -143,7 +144,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       cocktail: 'Коктейль (L)',
       espressoTonic: 'Эспрессо тоник (L)',
       fresh: 'Фреш (M)',
-      smoothie: 'Смузи (L)',
+      smoothie: 'Смузи (M)',
       bumble: 'Бамбл (L)',
       additional: 'Дополнительно'
     },
@@ -159,7 +160,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       rafWalnutCaramel: { name: 'Раф грек жаңғағы-карамель', price: 2100 },
       goldenLatte: { name: 'Золотой латте', price: 2800 },
       icelandicLatte: { name: 'Исландиялық латте', price: 2000 },
-      blueLatte: { name: 'Банан Латте с шапкой', price: 2300 },
+      blueLatte: { name: 'Латте кокос', price: 2200 },
       dripCoffee: { name: 'Дрип кофе', price: 2800, sizes: ['M'] },
       batch: { name: 'Batch', price: 2800 },
       v60: { name: 'V60', price: 2800 },
@@ -182,13 +183,13 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       cherryPear: { name: 'Шие алмұрт', price: 2100 },
       icedAmericano: { name: 'Айс Американо', price: 1700, sizes: ['M'] },
       icedLatteCappuccino: { name: 'Айс Латте / Капучино', price: 1900, sizes: ['M'] },
-      icedSpanishLatte: { name: 'Айс Испанский латте', price: 2500, sizes: ['M'] },
+      icedSpanishLatte: { name: 'Айс Испанский Латте', price: 2500, sizes: ['M'] },
       coldBrew: { name: 'Колд брю', price: 2200, sizes: ['M'] },
       icedMatcha: { name: 'Айс Матча', price: 2700, sizes: ['M'] },
-      frappeBenvito: { name: 'Фраппучино белвита', price: 2800, sizes: ['L'] },
-      peachAlmond: { name: 'Фраппе матча арахис', price: 2900, sizes: ['L'] },
-      appleKiwi: { name: 'Эспрессо / Матча тоник', price: 2100, sizes: ['M'] },
-      pineappleBanana: { name: 'Бамбл', price: 2200, sizes: ['M'] },
+      frappeBenvito: { name: 'Фраппе белвита', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Фраппе матча арахис', price: 3000, sizes: ['L'] },
+      appleKiwi: { name: 'Эспрессо/Матча тоник малина', price: 2400, sizes: ['M'] },
+      pineappleBanana: { name: 'Бамбл / Матча бамбл', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Лимонад - Яблоко капуста', price: 2100 },
       cherry: { name: 'Шие', price: 2100 },
       duchess: { name: 'Дюшес', price: 2100 },
@@ -224,12 +225,12 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Завтраки с 8:00 до 15:00',
     seasonal: {
-      dateSmoothie: { name: 'Смузи Финик', description: 'Нежный сливочный смузи с мягкой сладостью фиников и солнечной курагой. Бархатная текстура, лёгкие карамельные оттенки и тёплое послевкусие — как первый тёплый день весны.', price: 3200 },
-      pomegranateLimeTea: { name: 'Чай Гранат-лайм', description: 'Ароматный чёрный чай с сочным гранатом и бодрящим лаймом. Свежесть розмарина добавляет зелёную весеннюю нотку и лёгкую прохладу в каждом глотке.', price: 2300 },
-      jasmineGrapeIcedTea: { name: 'Айс ти Жасмин-виноград', description: 'Цветочный жасминовый айс ти с нежным виноградом и спелым персиком. Лёгкий, освежающий и гармоничный — словно прогулка по цветущему саду.', price: 2300 },
-      masalaTea: { name: 'Чай Масала', description: 'Пряный индийский напиток из чёрного чая с молоком, сахаром и специями. Обладает насыщенным вкусом и согревающим ароматом.', price: 2100 },
-      pineappleBananaLemonade: { name: 'Лимонад Ананас-банан', description: 'Яркий лимонад с тропическим ананасом и сладким бананом. Освежающий, сочный и солнечный — как тёплый ветер после долгой зимы.', price: 2300 },
-      oreoCacaoCheeseFoam: { name: 'Какао Орео с шапкой', description: 'Насыщенное шоколадное какао с нежной сырной пенкой и кусочками Орео. Сладкое весеннее настроение в каждом глотке — мягко, сливочно и по-десертному нежно.', price: 2300 }
+      affogato: { name: 'Аффогато (Эспрессо или матча)', description: 'Шарик мороженого с горячим двойным эспрессо или зелёной матчей.', price: 2100, size: '250мл' },
+      berryJasmineIcedTea: { name: 'Айс-ти ягодный жасмин', description: 'Холодный жасминовый чай с ягодными нотами и лёгкой кислинкой.', price: 2300, size: '650мл' },
+      kombuchaRoseFoam: { name: 'Комбуча с розовой пеной', description: 'Освежающая комбуча с воздушной пенкой из гибискуса и розы.', price: 2500, size: '450мл' },
+      berryNitro: { name: 'Ягодный нитро', description: 'Нитро-кофе с бархатистой пенкой и натуральным ягодным пюре.', price: 2400, size: '450мл' },
+      pinaColada: { name: 'Пина-колада', description: 'Освежающий тропический микс ананаса и кокоса.', price: 2300, size: '650мл' },
+      slushCoffee: { name: 'Слэш-кофе', description: 'Ледяной кофейный напиток с яблочным или карамельным вкусом.', price: 2100, size: '650мл' }
     }
   },
   kz: {
@@ -250,7 +251,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       cocktail: 'Коктейль (L)',
       espressoTonic: 'Эспрессо тоник (L)',
       fresh: 'Фреш (M)',
-      smoothie: 'Смузи (L)',
+      smoothie: 'Смузи (M)',
       bumble: 'Бамбл (L)',
       additional: 'Қосымша'
     },
@@ -265,7 +266,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       rafWalnutCaramel: { name: 'Раф орео', price: 2100 },
       goldenLatte: { name: 'Моккачино', price: 2800 },
       icelandicLatte: { name: 'Испандық латте', price: 2000 },
-      blueLatte: { name: 'Банан көбігімен Латте', price: 2300 },
+      blueLatte: { name: 'Кокос латте', price: 2200 },
       dripCoffee: { name: 'Дрип кофе', price: 2800, sizes: ['M'] },
       batch: { name: 'Батч', price: 2800 },
       v60: { name: 'Фильтр', price: 2800 },
@@ -292,10 +293,10 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       icedSpanishLatte: { name: 'Айс Испандық латте', price: 2500, sizes: ['M'] },
       coldBrew: { name: 'Колд брю', price: 2200, sizes: ['M'] },
       icedMatcha: { name: 'Айс Матча', price: 2700, sizes: ['M'] },
-      frappeBenvito: { name: 'Фраппучино Белвита', price: 2800, sizes: ['L'] },
-      peachAlmond: { name: 'Фраппе матча арахис', price: 2900, sizes: ['L'] },
-      appleKiwi: { name: 'Эспрессо / Матча тоник', price: 2100, sizes: ['M'] },
-      pineappleBanana: { name: 'Бамбл', price: 2200, sizes: ['M'] },
+      frappeBenvito: { name: 'Фраппе Белвита', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Фраппе матча арахис', price: 3000, sizes: ['L'] },
+      appleKiwi: { name: 'Эспрессо/Матча тоник таңқурай', price: 2400, sizes: ['M'] },
+      pineappleBanana: { name: 'Бамбл / Матча бамбл', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Лимонад - Алма-қырыққабат', price: 2100 },
       cherry: { name: 'Шие', price: 2100 },
       duchess: { name: 'Дюшес', price: 2100 },
@@ -331,12 +332,12 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Таңғы ас 8:00–15:00',
     seasonal: {
-      dateSmoothie: { name: 'Құрма смузиі', description: 'Құрманың жұмсақ тәттілігі мен күндей жарқыраған өрік қағы қосылған нәзік кілегейлі смузи. Барқыттай құрылым, жеңіл қарамель реңктері мен көктемнің алғашқы жылы күніндей жылы дәм.', price: 3200 },
-      pomegranateLimeTea: { name: 'Анар-лайм шайы', description: 'Шырынды анар мен сергітетін лайм қосылған хош иісті қара шай. Розмарин балғындығы әр жұтымға көктемгі жасыл реңк пен жеңіл салқындық сыйлайды.', price: 2300 },
-      jasmineGrapeIcedTea: { name: 'Жасмин-жүзім айс-тиі', description: 'Нәзік жүзім мен піскен шабдалы қосылған гүлді жасмин айс-тиі. Гүлдеген бақтағы серуендей жеңіл, сергітетін әрі үйлесімді сусын.', price: 2300 },
-      masalaTea: { name: 'Масала шайы', description: 'Қара шай, сүт, қант және дәмдеуіштерден дайындалған үндінің хош иісті сусыны. Қанық дәм мен жылытатын хош иіске ие.', price: 2100 },
-      pineappleBananaLemonade: { name: 'Ананас-банан лимонады', description: 'Тропикалық ананас пен тәтті банан қосылған жарқын лимонад. Сергітетін, шырынды әрі шуақты – ұзақ қыстан кейінгі жылы желдей асер береді.', price: 2300 },
-      oreoCacaoCheeseFoam: { name: 'Ірімшік көбігі бар Орео какаосы', description: 'Қанық шоколадты какао, назік ірімшік көбігі және Оreо кесектері. Әр жұтымдағы көктемгі тәтті көңіл-күй – жұмсақ, кілегейлі әрі десерттей назік.', price: 2300 }
+      affogato: { name: 'Аффогато (Эспрессо немесе матча)', description: 'Ыстық қос эспрессо немесе жасыл матча құйылған балмұздақ шары.', price: 2100, size: '250мл' },
+      berryJasmineIcedTea: { name: 'Жидекті жасмин айс-тиі', description: 'Жидек реңктері мен жеңіл қышқылдығы бар салқын жасмин шайы.', price: 2300, size: '650мл' },
+      kombuchaRoseFoam: { name: 'Раушан көбігі бар комбуча', description: 'Гибискус пен раушаннан жасалған әуе көбігі бар сергітетін комбуча.', price: 2500, size: '450мл' },
+      berryNitro: { name: 'Жидекті нитро', description: 'Барқыт көбігі мен табиғи жидек пюресі қосылған нитро-кофе.', price: 2400, size: '450мл' },
+      pinaColada: { name: 'Пина-колада', description: 'Ананас пен кокостың сергітетін тропикалық қоспасы.', price: 2300, size: '650мл' },
+      slushCoffee: { name: 'Слэш-кофе', description: 'Алма немесе карамель дәмі бар мұзды кофе сусыны.', price: 2100, size: '650мл' }
     }
   },
   en: {
@@ -357,7 +358,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       cocktail: 'Cocktail (L)',
       espressoTonic: 'Espresso Tonic (L)',
       fresh: 'Fresh (M)',
-      smoothie: 'Smoothie (L)',
+      smoothie: 'Smoothies (M)',
       bumble: 'Bumble (L)',
       additional: 'Additional'
     },
@@ -372,7 +373,7 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       rafWalnutCaramel: { name: 'Raf Walnut-Caramel', price: 2100 },
       goldenLatte: { name: 'Golden Latte', price: 2800 },
       icelandicLatte: { name: 'Icelandic Latte', price: 2000 },
-      blueLatte: { name: 'Banana Latte with cap', price: 2300 },
+      blueLatte: { name: 'Coconut Latte', price: 2200 },
       dripCoffee: { name: 'Drip Coffee', price: 2800, sizes: ['M'] },
       batch: { name: 'Batch', price: 2800 },
       v60: { name: 'V60', price: 2800 },
@@ -399,10 +400,10 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
       icedSpanishLatte: { name: 'Iced Spanish Latte', price: 2500, sizes: ['M'] },
       coldBrew: { name: 'Cold Brew', price: 2200, sizes: ['M'] },
       icedMatcha: { name: 'Iced Matcha', price: 2700, sizes: ['M'] },
-      frappeBenvito: { name: 'Frappuccino Belvita', price: 2800, sizes: ['L'] },
-      peachAlmond: { name: 'Frappe matcha peanut', price: 2900, sizes: ['L'] },
-      appleKiwi: { name: 'Espresso / Matcha Tonic', price: 2100, sizes: ['M'] },
-      pineappleBanana: { name: 'Bumble', price: 2200, sizes: ['M'] },
+      frappeBenvito: { name: 'Frappe Belvita', price: 2800, sizes: ['L'] },
+      peachAlmond: { name: 'Frappe matcha peanut', price: 3000, sizes: ['L'] },
+      appleKiwi: { name: 'Espresso/Matcha Tonic Raspberry', price: 2400, sizes: ['M'] },
+      pineappleBanana: { name: 'Bumble / Matcha Bumble', price: 2200, sizes: ['M'] },
       lemonadeAppleCabbage: { name: 'Lemonade - Apple cabbage', price: 2100 },
       cherry: { name: 'Cherry', price: 2100 },
       duchess: { name: 'Duchess', price: 2100 },
@@ -438,12 +439,12 @@ export const menuTranslations: Record<'ru' | 'kz' | 'en', MenuTranslations> = {
     },
     breakfastsSchedule: 'Breakfasts 8:00–15:00',
     seasonal: {
-      dateSmoothie: { name: 'Date Smoothie', description: 'Gentle creamy smoothie with the soft sweetness of dates and sunny apricots. Velvety texture, light caramel notes and a warm aftertaste – like the first warm day of spring.', price: 3200 },
-      pomegranateLimeTea: { name: 'Pomegranate-Lime Tea', description: 'Aromatic black tea with juicy pomegranate and invigorating lime. The freshness of rosemary adds a green spring note and light coolness in every sip.', price: 2300 },
-      jasmineGrapeIcedTea: { name: 'Jasmine-Grape Iced Tea', description: 'Floral jasmine iced tea with delicate grapes and ripe peaches. Light, refreshing and harmonious – like a stroll through a blossoming garden.', price: 2300 },
-      masalaTea: { name: 'Masala Tea', description: 'Spicy Indian drink made from black tea with milk, sugar and spices. Has a rich taste and warming aroma.', price: 2100 },
-      pineappleBananaLemonade: { name: 'Pineapple-Banana Lemonade', description: 'Bright lemonade with tropical pineapple and sweet banana. Refreshing, juicy and sunny – like a warm wind after a long winter.', price: 2300 },
-      oreoCacaoCheeseFoam: { name: 'Oreo Cacao with Cheese Foam', description: 'Rich chocolate cacao with delicate cheese foam and Oreo pieces. Sweet spring mood in every sip – soft, creamy and dessert-like delicate.', price: 2300 }
+      affogato: { name: 'Affogato (Espresso or matcha)', description: 'A scoop of ice cream with hot double espresso or green matcha.', price: 2100, size: '250ml' },
+      berryJasmineIcedTea: { name: 'Berry Jasmine Iced Tea', description: 'Cold jasmine tea with berry notes and a light tartness.', price: 2300, size: '650ml' },
+      kombuchaRoseFoam: { name: 'Kombucha with Rose Foam', description: 'Refreshing kombucha with airy hibiscus and rose foam.', price: 2500, size: '450ml' },
+      berryNitro: { name: 'Berry Nitro', description: 'Nitro coffee with velvety foam and natural berry puree.', price: 2400, size: '450ml' },
+      pinaColada: { name: 'Pina Colada', description: 'Refreshing tropical mix of pineapple and coconut.', price: 2300, size: '650ml' },
+      slushCoffee: { name: 'Slush Coffee', description: 'Icy coffee drink with apple or caramel flavor.', price: 2100, size: '650ml' }
     }
   }
 }; 

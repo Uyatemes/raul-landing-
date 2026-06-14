@@ -124,11 +124,25 @@ html {
 
 /* Фиксированная высота заголовков в сезонном меню для выравнивания */
 .menu-category:has(.seasonal-image-container) .menu-category-title {
-  min-height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1.4;
+}
+
+/* В многоколоночной раскладке резервируем высоту под самый длинный
+   заголовок (до 3 строк), чтобы картинки и таблицы цен были на одной линии */
+@media (min-width: 768px) {
+  .menu-category:has(.seasonal-image-container) .menu-category-title {
+    min-height: 6.7rem;
+  }
+}
+
+/* На узких десктоп-ширинах уменьшаем заголовок, чтобы он не уезжал в 4 строки */
+@media (min-width: 768px) and (max-width: 900px) {
+  .menu-category:has(.seasonal-image-container) .menu-category-title {
+    font-size: 1.25rem;
+  }
 }
 
 /* Табы меню */
@@ -588,6 +602,7 @@ html {
 
 .seasonal-menu-table .menu-cell-size,
 .seasonal-menu-table .menu-cell-price {
+  width: auto;
   padding: 1rem;
   text-align: center;
   border: none;

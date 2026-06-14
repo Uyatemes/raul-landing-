@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-content">
         {isMenuPage && (
-          <div className="menu-update-date">Меню обновлено 11.04.2026</div>
+          <div className="menu-update-date">Меню обновлено 14.06.2026</div>
         )}
         {!isHomePage && (
           <div className="footer-language-switcher">

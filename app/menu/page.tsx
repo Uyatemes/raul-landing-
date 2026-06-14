@@ -186,7 +186,17 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.alternativeCoffee}</h2>
               <table className="menu-table">
                 <tbody>
-                  <MenuItemRow item={t.items.dripCoffee} />
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>V60</div>
+                    </td>
+                    <td className="menu-cell-size">
+                      <div className="menu-cell-size-item">S</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2800</div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -248,24 +258,21 @@ function MenuContent() {
                   <MenuItemRow item={t.items.icedAmericano} />
                   <MenuItemRow item={t.items.icedLatteCappuccino} />
                   <MenuItemRow item={t.items.icedSpanishLatte} />
-                  <MenuItemRow item={t.items.coldBrew} />
-                  <MenuItemRow
-                    item={t.items.peachAlmond}
-                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></>}
-                  />
-                  <MenuItemRow item={t.items.frappeBenvito} />
                   <MenuItemRow
                     item={t.items.icedMatcha}
-                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'кұлпынай, манго, банан' : language === 'ru' ? 'клубника, манго, банан' : 'strawberry, mango, banana'}</span></>}
+                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'кұлпынай, манго, банан, қауын' : language === 'ru' ? 'клубника, манго, банан, дыня' : 'strawberry, mango, banana, melon'}</span></>}
                   />
-                  <MenuItemRow
-                    item={t.items.appleKiwi}
-                    nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'цитрус, таңкурай' : language === 'ru' ? 'малина, грейпфрут, клубника' : 'raspberry, grapefruit, strawberry'}</span></>}
-                  />
+                  <MenuItemRow item={t.items.appleKiwi} />
                   <MenuItemRow
                     item={t.items.pineappleBanana}
                     nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'шие, апельсин' : language === 'ru' ? 'вишня, апельсин' : 'cherry, orange'}</span></>}
                   />
+                  <MenuItemRow
+                    item={t.items.coldBrew}
+                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'шие, ананас' : language === 'ru' ? 'вишня, ананас' : 'cherry, pineapple'}</span></>}
+                  />
+                  <MenuItemRow item={t.items.frappeBenvito} />
+                  <MenuItemRow item={t.items.peachAlmond} />
                 </tbody>
               </table>
             </div>
@@ -273,13 +280,46 @@ function MenuContent() {
               <h2 className="menu-category-title">{t.categories.coldDrink}</h2>
               <table className="menu-table">
                 <tbody>
-                  <MenuItemRowNoSize item={t.items.mangoPassion} />
-                  <MenuItemRowNoSize item={t.items.raspberryStrawberryLime} />
-                  <MenuItemRowNoSize item={t.items.cherryPear} />
-                  <MenuItemRowNoSize
-                    item={t.items.lemonadeAppleCabbage}
-                    nameExtra={<><span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></>}
-                  />
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Айс ти - Манго-маракуйя' : language === 'ru' ? 'Айс ти - Манго-маракуйя' : 'Iced Tea - Mango-Passion Fruit'}</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Айс-ти - Таңкурай/Құлпынай цитрус' : language === 'ru' ? 'Айс ти - Малина/Клубника цитрус' : 'Iced Tea - Raspberry/Strawberry Citrus'}</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Лимонад - Ананас-банан' : language === 'ru' ? 'Лимонад - Ананас-банан' : 'Lemonade - Pineapple-Banana'}</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Лимонад - Алма' : language === 'ru' ? 'Лимонад - Яблоко' : 'Lemonade - Apple'}</div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Лимонад - Тамаринд' : language === 'ru' ? 'Лимонад - Тамаринд' : 'Lemonade - Tamarind'} <span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">2300</div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -304,6 +344,14 @@ function MenuContent() {
                     nameExtra={<><br /><span style={{ fontSize: '0.9em', color: '#444' }}>{language === 'kz' ? 'коллаген' : language === 'ru' ? 'коллаген' : 'collagen'}</span></>}
                   />
                   <MenuItemRowNoSize item={t.items.pineappleMango} />
+                  <tr className="menu-row">
+                    <td className="menu-cell">
+                      <div>{language === 'kz' ? 'Авокадо-тропик' : language === 'ru' ? 'Авокадо-тропик' : 'Avocado-Tropic'} <span style={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.9em', marginLeft: 8 }}>NEW</span></div>
+                    </td>
+                    <td className="menu-cell-price">
+                      <div className="menu-cell-price-item">3400</div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -329,94 +377,94 @@ function MenuContent() {
         <div className={`menu-content ${activeTab === 'seasonal' ? 'active' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.dateSmoothie.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.affogato.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/date-smoothie.png" alt={t.seasonal.dateSmoothie.name} className="seasonal-image" />
+                <img src="/images/seasonal/affogato.png" alt={t.seasonal.affogato.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.dateSmoothie.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.affogato.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.affogato.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.dateSmoothie.description}</p>
+              <p className="seasonal-description">{t.seasonal.affogato.description}</p>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.pomegranateLimeTea.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.berryJasmineIcedTea.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/pomegranate-lime-tea.png" alt={t.seasonal.pomegranateLimeTea.name} className="seasonal-image" />
+                <img src="/images/seasonal/berry-jasmine-iced-tea.png" alt={t.seasonal.berryJasmineIcedTea.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.pomegranateLimeTea.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.berryJasmineIcedTea.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.berryJasmineIcedTea.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.pomegranateLimeTea.description}</p>
+              <p className="seasonal-description">{t.seasonal.berryJasmineIcedTea.description}</p>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.jasmineGrapeIcedTea.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.kombuchaRoseFoam.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/jasmine-grape-iced-tea.png" alt={t.seasonal.jasmineGrapeIcedTea.name} className="seasonal-image" />
+                <img src="/images/seasonal/kombucha-rose-foam.png" alt={t.seasonal.kombuchaRoseFoam.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.jasmineGrapeIcedTea.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.kombuchaRoseFoam.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.kombuchaRoseFoam.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.jasmineGrapeIcedTea.description}</p>
+              <p className="seasonal-description">{t.seasonal.kombuchaRoseFoam.description}</p>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.masalaTea.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.berryNitro.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/masala-tea.png" alt={t.seasonal.masalaTea.name} className="seasonal-image" />
+                <img src="/images/seasonal/berry-nitro.png" alt={t.seasonal.berryNitro.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.masalaTea.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.berryNitro.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.berryNitro.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.masalaTea.description}</p>
+              <p className="seasonal-description">{t.seasonal.berryNitro.description}</p>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.pineappleBananaLemonade.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.pinaColada.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/pineapple-banana-lemonade.png" alt={t.seasonal.pineappleBananaLemonade.name} className="seasonal-image" />
+                <img src="/images/seasonal/pina-colada.png" alt={t.seasonal.pinaColada.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">L</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.pineappleBananaLemonade.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.pinaColada.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.pinaColada.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.pineappleBananaLemonade.description}</p>
+              <p className="seasonal-description">{t.seasonal.pinaColada.description}</p>
             </div>
             <div className="menu-category">
-              <h2 className="menu-category-title">{t.seasonal.oreoCacaoCheeseFoam.name}</h2>
+              <h2 className="menu-category-title">{t.seasonal.slushCoffee.name}</h2>
               <div className="seasonal-image-container">
-                <img src="/images/seasonal/oreo-cacao-cheese-foam.png" alt={t.seasonal.oreoCacaoCheeseFoam.name} className="seasonal-image" />
+                <img src="/images/seasonal/slush-coffee.png" alt={t.seasonal.slushCoffee.name} className="seasonal-image" />
               </div>
               <table className="seasonal-menu-table">
                 <tbody>
                   <tr className="menu-row">
-                    <td className="menu-cell-size"><div className="menu-cell-size-item">M</div></td>
-                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.oreoCacaoCheeseFoam.price}</div></td>
+                    <td className="menu-cell-size"><div className="menu-cell-size-item">{t.seasonal.slushCoffee.size}</div></td>
+                    <td className="menu-cell-price"><div className="menu-cell-price-item">{t.seasonal.slushCoffee.price}</div></td>
                   </tr>
                 </tbody>
               </table>
-              <p className="seasonal-description">{t.seasonal.oreoCacaoCheeseFoam.description}</p>
+              <p className="seasonal-description">{t.seasonal.slushCoffee.description}</p>
             </div>
           </div>
           <div className="mt-8">
